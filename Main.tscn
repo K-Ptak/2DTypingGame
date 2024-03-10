@@ -5,7 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://bwf5iw3u2lero" path="res://icon.svg" id="2_ax01g"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_5if04"]
 [ext_resource type="Script" path="res://Enemy.gd" id="4_mbbgv"]
-[ext_resource type="Script" path="res://Player.gd" id="6_x8bjl"]
+
+[sub_resource type="GDScript" id="GDScript_n0msr"]
+script/source = "extends CharacterBody2D
+
+@export var speed = 400
+
+func get_input():
+	var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
+	velocity = input_direction * speed
+	print(position)
+
+func _physics_process(_delta):
+	get_input()
+	move_and_slide()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3518"]
 size = Vector2(130, 128)
@@ -38,7 +52,7 @@ text = "[center]TEST[/center]"
 scroll_active = false
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("6_x8bjl")
+script = SubResource("GDScript_n0msr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 modulate = Color(1, 0, 0, 1)
