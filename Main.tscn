@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://gphmjnvlolkh"]
+[gd_scene load_steps=8 format=3 uid="uid://gphmjnvlolkh"]
 
 [ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="1_il6wb"]
 [ext_resource type="Script" path="res://Main.gd" id="1_wno3c"]
 [ext_resource type="Texture2D" uid="uid://bwf5iw3u2lero" path="res://icon.svg" id="2_ax01g"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_5if04"]
 [ext_resource type="Script" path="res://Enemy.gd" id="4_mbbgv"]
+[ext_resource type="Script" path="res://Player.gd" id="6_x8bjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3518"]
+size = Vector2(130, 128)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wno3c")
@@ -31,4 +35,25 @@ theme_override_fonts/normal_font = ExtResource("3_5if04")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]TEST[/center]"
+scroll_active = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("6_x8bjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(553, 364)
+scale = Vector2(1.01563, 1)
+texture = ExtResource("2_ax01g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(553, 364)
+shape = SubResource("RectangleShape2D_f3518")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player"]
+offset_left = 523.0
+offset_top = 354.0
+offset_right = 584.0
+offset_bottom = 376.0
+text = "PLAYER"
 scroll_active = false

@@ -5,6 +5,8 @@ extends Sprite2D
 @export var green = Color("#639795")
 @export var red = Color("#a65455")
 
+@export var speed = 0.1
+
 @onready var prompt = $RichTextLabel
 @onready var prompt_text = strip_bbcode(prompt.text.to_upper())
 
