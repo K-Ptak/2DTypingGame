@@ -13,6 +13,8 @@ func find_new_active_enemy(typed_character: String):
 			print("found new enemy that starts with %s" % next_character)
 			active_enemy = enemy
 			current_letter_index = 1
+			active_enemy.set_next_character(current_letter_index)
+			return
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed():
@@ -29,6 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if key_typed == next_character:
 				print("successfully typed %s" % key_typed)
 				current_letter_index += 1
+				active_enemy.set_next_character(current_letter_index)
 				if current_letter_index == prompt.length():
 					print("Done")
 					current_letter_index = -1
