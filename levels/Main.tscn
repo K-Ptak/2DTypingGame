@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://gphmjnvlolkh"]
+
+[ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
+[ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="2_6r6px"]
+[ext_resource type="PackedScene" uid="uid://n3gxvx5c08yb" path="res://enemies/Enemy.tscn" id="3_k3dw0"]
+[ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_4pd0v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1168.0
+offset_bottom = 664.0
+texture = ExtResource("2_6r6px")
+stretch_mode = 1
+
+[node name="EnemyContainer" parent="." instance=ExtResource("3_k3dw0")]
+
+[node name="Player" parent="." instance=ExtResource("6_xxe0n")]
