@@ -36,6 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					print("Done")
 					current_letter_index = -1
 					active_enemy.queue_free()
+					$EnemyDeathSound.play()
 					active_enemy = null
 			else:
 				print("incorrectly typed %s instead of %s" % [key_typed, next_character])
