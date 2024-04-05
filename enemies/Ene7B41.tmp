@@ -1,17 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://n3gxvx5c08yb"]
+[gd_scene load_steps=5 format=3 uid="uid://n3gxvx5c08yb"]
 
 [ext_resource type="Texture2D" uid="uid://bwf5iw3u2lero" path="res://icon.svg" id="1_g7ylg"]
 [ext_resource type="Script" path="res://enemies/Enemy.gd" id="2_s8p14"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_g4fhl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1v4x"]
+size = Vector2(130, 134)
+
 [node name="EnemyContainer" type="Node2D"]
 
-[node name="Enemy" type="Sprite2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Enemy" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(948, 281)
 texture = ExtResource("1_g7ylg")
 script = ExtResource("2_s8p14")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Enemy"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CharacterBody2D/Enemy"]
 offset_left = -73.0
 offset_top = -108.0
 offset_right = 73.0
@@ -21,3 +26,7 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]TEST[/center]"
 scroll_active = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(948, 281)
+shape = SubResource("RectangleShape2D_s1v4x")

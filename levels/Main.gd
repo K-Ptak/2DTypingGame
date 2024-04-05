@@ -19,17 +19,17 @@ func find_new_active_enemy(typed_character: String):
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed():
 		var typed_event = event as InputEventKey
-		print(typed_event)
+		#print(typed_event)
 		var key_typed = typed_event.as_text_keycode()
-		print("Key typed %s" % key_typed)
+		#print("Key typed %s" % key_typed)
 		if active_enemy == null:
 			find_new_active_enemy(key_typed)
 		else:
 			var prompt = active_enemy.get_prompt()
 			var next_character = prompt.substr(current_letter_index, 1)
-			print("next_character %s" % next_character)
+			#print("next_character %s" % next_character)
 			if key_typed == next_character:
-				print("successfully typed %s" % key_typed)
+				#print("successfully typed %s" % key_typed)
 				current_letter_index += 1
 				active_enemy.set_next_character(current_letter_index)
 				if current_letter_index == prompt.length():

@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://gphmjnvlolkh"]
+
+[ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
+[ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="2_6r6px"]
+[ext_resource type="AudioStream" uid="uid://bqyv28gprwl4r" path="res://assets/placeholder/music.mp3" id="5_wnrkh"]
+[ext_resource type="Script" path="res://enemies/Enemy.gd" id="6_kqqr6"]
+[ext_resource type="Texture2D" uid="uid://bklifutvan2g1" path="res://assets/placeholder/capy-walk-Sheet.png" id="6_x3qd7"]
+[ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
+[ext_resource type="AudioStream" uid="uid://6uotn38ekx24" path="res://assets/placeholder/short_sound.mp3" id="6_y2v0v"]
+[ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="7_m434e"]
+
+[sub_resource type="Curve2D" id="Curve2D_kxt54"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -22, 47, 0, 0, 0, 0, 1131, 47, 0, 0, 0, 0, 1131, 694, 0, 0, 0, 0, -22, 696, 0, 0, 0, 0, -24, 45)
+}
+point_count = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxgni"]
+atlas = ExtResource("6_x3qd7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5vfv"]
+atlas = ExtResource("6_x3qd7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16toy"]
+atlas = ExtResource("6_x3qd7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yryjy"]
+atlas = ExtResource("6_x3qd7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ejv5"]
+atlas = ExtResource("6_x3qd7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekwe3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxgni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5vfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16toy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yryjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ejv5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3l3x"]
+size = Vector2(64, 64)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_4pd0v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1168.0
+offset_bottom = 664.0
+texture = ExtResource("2_6r6px")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("6_xxe0n")]
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wnrkh")
+autoplay = true
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_y2v0v")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_kxt54")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-22, 47)
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="EnemyContainer"]
+position = Vector2(879, 394)
+script = ExtResource("6_kqqr6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyContainer/CharacterBody2D"]
+position = Vector2(-9.05991e-06, 0)
+sprite_frames = SubResource("SpriteFrames_ekwe3")
+autoplay = "default"
+frame = 4
+frame_progress = 0.260265
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyContainer/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_p3l3x")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EnemyContainer/CharacterBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -75.0
+offset_right = 73.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_m434e")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]TEST[/center]"
+scroll_active = false

@@ -1,17 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://gphmjnvlolkh"]
+[gd_scene load_steps=10 format=3 uid="uid://gphmjnvlolkh"]
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
 [ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="2_6r6px"]
 [ext_resource type="AudioStream" uid="uid://bqyv28gprwl4r" path="res://assets/placeholder/music.mp3" id="5_wnrkh"]
-[ext_resource type="PackedScene" uid="uid://b23bfh6lc34ne" path="res://enemies/EnemyBasic.tscn" id="6_lncai"]
+[ext_resource type="Script" path="res://enemies/Enemy.gd" id="6_irmgn"]
 [ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
 [ext_resource type="AudioStream" uid="uid://6uotn38ekx24" path="res://assets/placeholder/short_sound.mp3" id="6_y2v0v"]
+[ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="7_m434e"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxt54"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -22, 47, 0, 0, 0, 0, 1131, 47, 0, 0, 0, 0, 1131, 694, 0, 0, 0, 0, -22, 696, 0, 0, 0, 0, -24, 45)
 }
 point_count = 5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2wu1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4pd0v")
@@ -23,8 +26,6 @@ texture = ExtResource("2_6r6px")
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("6_xxe0n")]
-unique_name_in_owner = true
-position = Vector2(594, 346)
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wnrkh")
@@ -41,4 +42,17 @@ position = Vector2(-22, 47)
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
-[node name="EnemyBasic" parent="EnemyContainer" instance=ExtResource("6_lncai")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyContainer"]
+sprite_frames = SubResource("SpriteFrames_y2wu1")
+script = ExtResource("6_irmgn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EnemyContainer/AnimatedSprite2D"]
+offset_left = -73.0
+offset_top = -108.0
+offset_right = 73.0
+offset_bottom = -68.0
+theme_override_fonts/normal_font = ExtResource("7_m434e")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]TEST[/center]"
+scroll_active = false

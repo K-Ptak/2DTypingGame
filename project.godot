@@ -24,10 +24,6 @@ aseprite_executable_path="C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ase
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
-
 [input]
 
 up={

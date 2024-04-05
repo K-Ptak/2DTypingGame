@@ -1,14 +1,23 @@
-extends Sprite2D
+extends CharacterBody2D
 
+
+const SPEED = 100
+
+func _physics_process(_delta):
+	if %Player:
+		move_and_collide(global_position.direction_to(%Player.global_position) * SPEED * _delta)
 
 @export var blue = Color("#4682b4")
 @export var green = Color("#639795")
 @export var red = Color("#a65455")
 
-@export var speed = 0.1
+
 
 @onready var prompt = $RichTextLabel
 @onready var prompt_text = strip_bbcode(prompt.text.to_upper())
+
+@export var speed = 100
+
 
 func strip_bbcode(source:String) -> String: #Strips the invisible bbcode from prompt
 	var regex = RegEx.new()
@@ -16,7 +25,7 @@ func strip_bbcode(source:String) -> String: #Strips the invisible bbcode from pr
 	return regex.sub(source, "", true)
 
 func get_prompt() -> String:
-	print(prompt_text)
+	#print(prompt_text)
 	return prompt_text
 
 func set_next_character(next_character_index: int):

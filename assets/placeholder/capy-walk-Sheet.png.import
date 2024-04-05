@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbww6j66bavar"
-path="res://.godot/imported/icon.png-fcba8a3700fb5af89c995132142de0f4.ctex"
+uid="uid://bklifutvan2g1"
+path="res://.godot/imported/capy-walk-Sheet.png-3b3a56370a58c31f3c0b545eb2725a85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/nklbdev.aseprite_importers/icon.png"
-dest_files=["res://.godot/imported/icon.png-fcba8a3700fb5af89c995132142de0f4.ctex"]
+source_file="res://assets/placeholder/capy-walk-Sheet.png"
+dest_files=["res://.godot/imported/capy-walk-Sheet.png-3b3a56370a58c31f3c0b545eb2725a85.ctex"]
 
 [params]
 
