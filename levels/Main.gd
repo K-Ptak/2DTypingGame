@@ -5,6 +5,8 @@ extends Node2D
 var active_enemy = null
 var current_letter_index: int = -1
 
+var controlls = ["Up", "Down", "Left", "Right"]
+
 func find_new_active_enemy(typed_character: String):
 	for enemy in enemy_container.get_children():
 		var prompt = enemy.get_prompt()
@@ -39,4 +41,5 @@ func _unhandled_input(event: InputEvent) -> void:
 					$EnemyDeathSound.play()
 					active_enemy = null
 			else:
-				print("incorrectly typed %s instead of %s" % [key_typed, next_character])
+				if !controlls.has(key_typed) :
+					print("incorrectly typed %s instead of %s" % [key_typed, next_character])
