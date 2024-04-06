@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
-
 const SPEED = 100
 
 func _physics_process(_delta):
-	if %Player:
-		move_and_collide(global_position.direction_to(%Player.global_position) * SPEED * _delta)
+	move_and_collide(global_position.direction_to(get_node("/root/Main/Player").position) * SPEED * _delta)
 
 @export var blue = Color("#4682b4")
 @export var green = Color("#639795")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s6x00yhtj00y"]
+[gd_scene load_steps=11 format=3 uid="uid://b23bfh6lc34ne"]
 
 [ext_resource type="Script" path="res://enemies/Enemy.gd" id="1_me22e"]
 [ext_resource type="Texture2D" uid="uid://bklifutvan2g1" path="res://assets/placeholder/capy-walk-Sheet.png" id="2_xfugq"]

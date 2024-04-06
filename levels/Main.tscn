@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://gphmjnvlolkh"]
+[gd_scene load_steps=7 format=3 uid="uid://gphmjnvlolkh"]
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
 [ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="2_6r6px"]
 [ext_resource type="AudioStream" uid="uid://bqyv28gprwl4r" path="res://assets/placeholder/music.mp3" id="5_wnrkh"]
-[ext_resource type="PackedScene" uid="uid://b23bfh6lc34ne" path="res://enemies/EnemyBasic.tscn" id="6_lncai"]
 [ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
 [ext_resource type="AudioStream" uid="uid://6uotn38ekx24" path="res://assets/placeholder/short_sound.mp3" id="6_y2v0v"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxt54"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -22, 47, 0, 0, 0, 0, 1131, 47, 0, 0, 0, 0, 1131, 694, 0, 0, 0, 0, -22, 696, 0, 0, 0, 0, -24, 45)
+"points": PackedVector2Array(0, 0, 0, 0, -22, 15.9731, 0, 0, 0, 0, 1132.95, 15.9731, 0, 0, 0, 0, 1131, 694, 0, 0, 0, 0, -22, 696, 0, 0, 0, 0, -22, 16.9761)
 }
 point_count = 5
 
@@ -20,11 +19,23 @@ script = ExtResource("1_4pd0v")
 offset_right = 1168.0
 offset_bottom = 664.0
 texture = ExtResource("2_6r6px")
-stretch_mode = 1
+expand_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("6_xxe0n")]
 unique_name_in_owner = true
 position = Vector2(594, 346)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-626.856, -470.2)
+scale = Vector2(1.14291, 1.26466)
+curve = SubResource("Curve2D_kxt54")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-22, 15.9731)
+
+[node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
+unique_name_in_owner = true
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wnrkh")
@@ -33,12 +44,9 @@ autoplay = true
 [node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_y2v0v")
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_kxt54")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-22, 47)
-
 [node name="EnemyContainer" type="Node2D" parent="."]
 
-[node name="EnemyBasic" parent="EnemyContainer" instance=ExtResource("6_lncai")]
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

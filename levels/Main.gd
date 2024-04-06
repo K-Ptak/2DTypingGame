@@ -4,8 +4,18 @@ extends Node2D
 
 var active_enemy = null
 var current_letter_index: int = -1
+var enemyPool = preload("res://enemies/EnemyBasic.tscn")
 
-var controlls = ["Up", "Down", "Left", "Right"]
+	
+func _on_enemy_spawn_timer_timeout():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
+	%PathFollow2D.progress = rng.randi_range(0, 3664)
+	var instance = enemyPool.instantiate()
+	
+	instance.global_position = %Marker2D.global_position
+	enemy_container.add_child(instance)
 
 func find_new_active_enemy(typed_character: String):
 	for enemy in enemy_container.get_children():
@@ -17,6 +27,8 @@ func find_new_active_enemy(typed_character: String):
 			current_letter_index = 1
 			active_enemy.set_next_character(current_letter_index)
 			return
+
+var controlls = ["Up", "Down", "Left", "Right"]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed():
@@ -43,3 +55,4 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				if !controlls.has(key_typed) :
 					print("incorrectly typed %s instead of %s" % [key_typed, next_character])
+
