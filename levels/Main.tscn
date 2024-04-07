@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kxt54"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -22, 15.9731, 0, 0, 0, 0, 1132.95, 15.9731, 0, 0, 0, 0, 1131, 694, 0, 0, 0, 0, -22, 696, 0, 0, 0, 0, -22, 16.9761)
+"points": PackedVector2Array(0, 0, 0, 0, -20.012, 15.0102, 0, 0, 0, 0, 1594.88, 11.5231, 0, 0, 0, 0, 1582.68, 998.845, 0, 0, 0, 0, -29.2892, 1009.31, 0, 0, 0, 0, -22, 16.9761)
 }
 point_count = 5
 
@@ -26,13 +26,14 @@ unique_name_in_owner = true
 position = Vector2(594, 346)
 
 [node name="Path2D" type="Path2D" parent="Player"]
-position = Vector2(-626.856, -470.2)
-scale = Vector2(1.14291, 1.26466)
+position = Vector2(-944.268, -848.681)
+scale = Vector2(1.18584, 1.5344)
 curve = SubResource("Curve2D_kxt54")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
-position = Vector2(-22, 15.9731)
+position = Vector2(-20.012, 15.0102)
+rotation = -0.00215929
 
 [node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
 unique_name_in_owner = true

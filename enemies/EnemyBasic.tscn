@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://s6x00yhtj00y"]
 
-[ext_resource type="Script" path="res://enemies/Enemy.gd" id="1_me22e"]
+[ext_resource type="Script" path="res://enemies/EnemyBasic.gd" id="1_ys6w1"]
 [ext_resource type="Texture2D" uid="uid://bklifutvan2g1" path="res://assets/placeholder/capy-walk-Sheet.png" id="2_xfugq"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_aigh0"]
 
@@ -50,9 +50,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3l3x"]
 size = Vector2(64, 64)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="EnemyBasic" type="CharacterBody2D"]
 position = Vector2(879, 394)
-script = ExtResource("1_me22e")
+script = ExtResource("1_ys6w1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9.05991e-06, 0)

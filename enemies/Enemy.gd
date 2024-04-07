@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100
-
-func _physics_process(_delta):
-	move_and_collide(global_position.direction_to(get_node("/root/Main/Player").position) * SPEED * _delta)
+class_name Enemy
 
 @export var blue = Color("#4682b4")
 @export var green = Color("#639795")
@@ -13,8 +10,6 @@ func _physics_process(_delta):
 
 @onready var prompt = $RichTextLabel
 @onready var prompt_text = strip_bbcode(prompt.text.to_upper())
-
-@export var speed = 100
 
 
 func strip_bbcode(source:String) -> String: #Strips the invisible bbcode from prompt

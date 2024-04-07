@@ -4,7 +4,7 @@ extends Node2D
 
 var active_enemy = null
 var current_letter_index: int = -1
-var enemyPool = preload("res://enemies/EnemyBasic.tscn")
+var enemyPool = [preload("res://enemies/EnemyBasic.tscn"), preload("res://enemies/EnemySprinter.tscn")]
 
 	
 func _on_enemy_spawn_timer_timeout():
@@ -12,7 +12,7 @@ func _on_enemy_spawn_timer_timeout():
 	rng.randomize()
 	
 	%PathFollow2D.progress = rng.randi_range(0, 3664)
-	var instance = enemyPool.instantiate()
+	var instance = enemyPool.pick_random().instantiate()
 	
 	instance.global_position = %Marker2D.global_position
 	enemy_container.add_child(instance)
