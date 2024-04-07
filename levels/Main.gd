@@ -55,4 +55,3 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				if !controlls.has(key_typed) :
 					print("incorrectly typed %s instead of %s" % [key_typed, next_character])
-

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://gphmjnvlolkh"]
+[gd_scene load_steps=8 format=3 uid="uid://gphmjnvlolkh"]
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
 [ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="2_6r6px"]
 [ext_resource type="AudioStream" uid="uid://bqyv28gprwl4r" path="res://assets/placeholder/music.mp3" id="5_wnrkh"]
+[ext_resource type="PackedScene" uid="uid://bouigtkjllql2" path="res://menus/GUI.tscn" id="6_wndf1"]
 [ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
 [ext_resource type="AudioStream" uid="uid://6uotn38ekx24" path="res://assets/placeholder/short_sound.mp3" id="6_y2v0v"]
 
@@ -37,6 +38,12 @@ rotation = -0.00215929
 
 [node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
 unique_name_in_owner = true
+
+[node name="GUI" parent="Player" instance=ExtResource("6_wndf1")]
+offset_left = -864.0
+offset_top = -478.0
+offset_right = 879.0
+offset_bottom = 455.0
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wnrkh")
