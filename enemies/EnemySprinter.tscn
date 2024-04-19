@@ -1,31 +1,31 @@
 [gd_scene load_steps=12 format=3 uid="uid://dftd3nr76x0uj"]
 
 [ext_resource type="Script" path="res://enemies/EnemySprinter.gd" id="1_hywgg"]
-[ext_resource type="Texture2D" uid="uid://c282qcfivcaob" path="res://assets/Enemies/lizard-Sheet.png" id="2_igyuw"]
+[ext_resource type="Texture2D" uid="uid://c282qcfivcaob" path="res://assets/enemies/lizard-Sheet.png" id="2_p1g50"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_mr5n2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21e7f"]
-atlas = ExtResource("2_igyuw")
+atlas = ExtResource("2_p1g50")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvdyh"]
-atlas = ExtResource("2_igyuw")
+atlas = ExtResource("2_p1g50")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwbkx"]
-atlas = ExtResource("2_igyuw")
+atlas = ExtResource("2_p1g50")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6m8v"]
-atlas = ExtResource("2_igyuw")
+atlas = ExtResource("2_p1g50")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wd7c"]
-atlas = ExtResource("2_igyuw")
+atlas = ExtResource("2_p1g50")
 region = Rect2(400, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcm2i"]
-atlas = ExtResource("2_igyuw")
+atlas = ExtResource("2_p1g50")
 region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ls2r"]
@@ -84,5 +84,4 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_mr5n2")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[center]TEST[/center]"
 scroll_active = false

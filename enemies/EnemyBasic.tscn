@@ -1,27 +1,27 @@
 [gd_scene load_steps=11 format=3 uid="uid://s6x00yhtj00y"]
 
 [ext_resource type="Script" path="res://enemies/EnemyBasic.gd" id="1_ys6w1"]
-[ext_resource type="Texture2D" uid="uid://xtff6iebfg64" path="res://assets/Enemies/rat-Sheet.png" id="2_5npuv"]
+[ext_resource type="Texture2D" uid="uid://xtff6iebfg64" path="res://assets/enemies/rat-Sheet.png" id="2_kluw0"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_aigh0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y5cel"]
-atlas = ExtResource("2_5npuv")
+atlas = ExtResource("2_kluw0")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_br08t"]
-atlas = ExtResource("2_5npuv")
+atlas = ExtResource("2_kluw0")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onemg"]
-atlas = ExtResource("2_5npuv")
+atlas = ExtResource("2_kluw0")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttvdx"]
-atlas = ExtResource("2_5npuv")
+atlas = ExtResource("2_kluw0")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tg4l4"]
-atlas = ExtResource("2_5npuv")
+atlas = ExtResource("2_kluw0")
 region = Rect2(400, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ekwe3"]
@@ -79,5 +79,4 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_aigh0")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[center]TEST[/center]"
 scroll_active = false

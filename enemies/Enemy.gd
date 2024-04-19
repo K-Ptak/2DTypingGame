@@ -9,7 +9,12 @@ class_name Enemy
 
 
 @onready var prompt = $RichTextLabel
-@onready var prompt_text = strip_bbcode(prompt.text.to_upper())
+@onready var prompt_text
+
+func _ready() -> void:
+	prompt_text = PromptList.get_prompt()
+	prompt_text = prompt_text.to_upper()
+	prompt.parse_bbcode(set_center_tags(prompt_text))
 
 
 func strip_bbcode(source:String) -> String: #Strips the invisible bbcode from prompt
@@ -18,7 +23,6 @@ func strip_bbcode(source:String) -> String: #Strips the invisible bbcode from pr
 	return regex.sub(source, "", true)
 
 func get_prompt() -> String:
-	#print(prompt_text)
 	return prompt_text
 
 func set_next_character(next_character_index: int):
@@ -27,7 +31,10 @@ func set_next_character(next_character_index: int):
 	var red_text = ""
 	if next_character_index != prompt_text.length():
 		red_text = get_bbcode_color_tag(red) + prompt_text.substr(next_character_index + 1, prompt_text.length() - next_character_index + 1) + get_bbcode_end_color_tag()
-	prompt.parse_bbcode("[center]" + blue_text + green_text + red_text + "[/center]")
+	prompt.parse_bbcode(set_center_tags(blue_text + green_text + red_text))
+	
+func set_center_tags(string_to_center: String):
+	return "[center]" + string_to_center + "[/center]"
 	
 func get_bbcode_color_tag(color: Color) -> String:
 	return "[color=#" + color.to_html(false) + "]"
