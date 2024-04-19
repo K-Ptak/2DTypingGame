@@ -5,16 +5,27 @@
 [sub_resource type="GDScript" id="GDScript_n0msr"]
 script/source = "extends CharacterBody2D
 
+signal hp_changed(player_hearts)
+
 @export var speed = 400
 @export var player_position = position
+@export var max_hp: int = 3
+@export var hp: int = max_hp
 
 func get_input():
 	var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
 	velocity = input_direction * speed
+	
+	if Input.is_action_pressed(\"left\"):
+		$Sprite2D.flip_h = true
+		
+	if Input.is_action_pressed(\"right\"):
+		$Sprite2D.flip_h = false
 
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
+
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3518"]

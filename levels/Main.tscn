@@ -34,16 +34,16 @@ curve = SubResource("Curve2D_kxt54")
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
 position = Vector2(-20.012, 15.0102)
-rotation = -0.00215929
+rotation = -0.00215934
 
 [node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
 unique_name_in_owner = true
 
 [node name="GUI" parent="Player" instance=ExtResource("6_wndf1")]
-offset_left = -864.0
-offset_top = -478.0
-offset_right = 879.0
-offset_bottom = 455.0
+offset_left = -955.0
+offset_top = -537.0
+offset_right = 967.0
+offset_bottom = 526.0
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wnrkh")

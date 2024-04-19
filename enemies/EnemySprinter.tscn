@@ -1,25 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://dftd3nr76x0uj"]
+[gd_scene load_steps=12 format=3 uid="uid://dftd3nr76x0uj"]
 
 [ext_resource type="Script" path="res://enemies/EnemySprinter.gd" id="1_hywgg"]
-[ext_resource type="Texture2D" uid="uid://cfnkthe7elefm" path="res://assets/placeholder/puma-run-Sheet.png" id="2_4rmpg"]
+[ext_resource type="Texture2D" uid="uid://c282qcfivcaob" path="res://assets/Enemies/lizard-Sheet.png" id="2_igyuw"]
 [ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_mr5n2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifwqs"]
-atlas = ExtResource("2_4rmpg")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_21e7f"]
+atlas = ExtResource("2_igyuw")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yqfc6"]
-atlas = ExtResource("2_4rmpg")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvdyh"]
+atlas = ExtResource("2_igyuw")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwbkx"]
+atlas = ExtResource("2_igyuw")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6m8v"]
+atlas = ExtResource("2_igyuw")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wd7c"]
+atlas = ExtResource("2_igyuw")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcm2i"]
+atlas = ExtResource("2_igyuw")
+region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ls2r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ifwqs")
+"texture": SubResource("AtlasTexture_21e7f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yqfc6")
+"texture": SubResource("AtlasTexture_pvdyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwbkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6m8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wd7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcm2i")
 }],
 "loop": true,
 "name": &"default",
@@ -27,7 +55,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njpw7"]
-size = Vector2(64, 64)
+size = Vector2(71, 51)
 
 [node name="EnemySprinter" type="CharacterBody2D"]
 script = ExtResource("1_hywgg")
@@ -38,6 +66,7 @@ sprite_frames = SubResource("SpriteFrames_0ls2r")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1.5)
 shape = SubResource("RectangleShape2D_njpw7")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
