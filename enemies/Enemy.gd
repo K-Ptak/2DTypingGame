@@ -5,6 +5,7 @@ class_name Enemy
 @export var blue = Color("#4682b4")
 @export var green = Color("#639795")
 @export var red = Color("#a65455")
+@export var white = Color("#ffffff")
 
 
 
@@ -32,6 +33,9 @@ func set_next_character(next_character_index: int):
 	if next_character_index != prompt_text.length():
 		red_text = get_bbcode_color_tag(red) + prompt_text.substr(next_character_index + 1, prompt_text.length() - next_character_index + 1) + get_bbcode_end_color_tag()
 	prompt.parse_bbcode(set_center_tags(blue_text + green_text + red_text))
+	
+func reset_prompt():
+	prompt.parse_bbcode(set_center_tags(get_bbcode_color_tag(white) + prompt_text + get_bbcode_end_color_tag()))
 	
 func set_center_tags(string_to_center: String):
 	return "[center]" + string_to_center + "[/center]"

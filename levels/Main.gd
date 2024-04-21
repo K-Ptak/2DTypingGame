@@ -38,6 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print("Key typed %s" % key_typed)
 		if active_enemy == null:
 			find_new_active_enemy(key_typed)
+		elif key_typed == "Delete":
+			active_enemy.reset_prompt()
+			active_enemy = null
 		else:
 			var prompt = active_enemy.get_prompt()
 			var next_character = prompt.substr(current_letter_index, 1)
@@ -49,6 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if current_letter_index == prompt.length():
 					print("Done")
 					current_letter_index = -1
+					%Player/GUI/CanvasLayer/PlayerScore/Score.on_enemy_defeat(active_enemy.SCORE)
 					active_enemy.queue_free()
 					$EnemyDeathSound.play()
 					active_enemy = null

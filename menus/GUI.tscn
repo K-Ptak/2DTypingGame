@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=6 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GameTime.gd" id="1_ysxcr"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
 [ext_resource type="FontFile" uid="uid://cnboi1q3iyvyl" path="res://assets/fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="3_rlxfr"]
+[ext_resource type="Script" path="res://menus/Score.gd" id="4_0en27"]
 [ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="4_06uhq"]
 
 [node name="GUI" type="MarginContainer"]
@@ -101,6 +102,7 @@ theme_override_fonts/font = ExtResource("3_rlxfr")
 theme_override_font_sizes/font_size = 26
 text = "0000000"
 horizontal_alignment = 1
+script = ExtResource("4_0en27")
 
 [node name="Multiplier" type="Label" parent="CanvasLayer/PlayerScore"]
 unique_name_in_owner = true
@@ -117,6 +119,6 @@ offset_bottom = 22.036
 theme_override_colors/font_color = Color(0.878431, 0.145098, 0.356863, 1)
 theme_override_fonts/font = ExtResource("4_06uhq")
 theme_override_font_sizes/font_size = 53
-text = "x0"
+text = "x1"
 horizontal_alignment = 1
 vertical_alignment = 1
