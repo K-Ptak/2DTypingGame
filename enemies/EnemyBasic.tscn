@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s6x00yhtj00y"]
+[gd_scene load_steps=12 format=3 uid="uid://s6x00yhtj00y"]
 
 [ext_resource type="Script" path="res://enemies/EnemyBasic.gd" id="1_ys6w1"]
 [ext_resource type="Texture2D" uid="uid://xtff6iebfg64" path="res://assets/enemies/rat-Sheet.png" id="2_kluw0"]
@@ -50,6 +50,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3l3x"]
 size = Vector2(91, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxeah"]
+size = Vector2(93, 63)
+
 [node name="EnemyBasic" type="CharacterBody2D"]
 position = Vector2(879, 394)
 script = ExtResource("1_ys6w1")
@@ -60,7 +63,7 @@ sprite_frames = SubResource("SpriteFrames_ekwe3")
 autoplay = "default"
 frame_progress = 0.260265
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 17.5)
 shape = SubResource("RectangleShape2D_p3l3x")
 
@@ -80,3 +83,9 @@ theme_override_fonts/normal_font = ExtResource("3_aigh0")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 scroll_active = false
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1.5, 17.5)
+shape = SubResource("RectangleShape2D_xxeah")

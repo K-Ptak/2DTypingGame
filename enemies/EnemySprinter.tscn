@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dftd3nr76x0uj"]
+[gd_scene load_steps=13 format=3 uid="uid://dftd3nr76x0uj"]
 
 [ext_resource type="Script" path="res://enemies/EnemySprinter.gd" id="1_hywgg"]
 [ext_resource type="Texture2D" uid="uid://c282qcfivcaob" path="res://assets/enemies/lizard-Sheet.png" id="2_p1g50"]
@@ -57,6 +57,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njpw7"]
 size = Vector2(71, 51)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ao0k"]
+size = Vector2(73, 53)
+
 [node name="EnemySprinter" type="CharacterBody2D"]
 script = ExtResource("1_hywgg")
 
@@ -65,7 +68,7 @@ position = Vector2(-9.05991e-06, 0)
 sprite_frames = SubResource("SpriteFrames_0ls2r")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 1.5)
 shape = SubResource("RectangleShape2D_njpw7")
 
@@ -85,3 +88,9 @@ theme_override_fonts/normal_font = ExtResource("3_mr5n2")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 scroll_active = false
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_3ao0k")

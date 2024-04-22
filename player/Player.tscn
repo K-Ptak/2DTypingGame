@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bosr0wvbp1amm"]
+[gd_scene load_steps=5 format=3 uid="uid://bosr0wvbp1amm"]
 
 [ext_resource type="Texture2D" uid="uid://bwf5iw3u2lero" path="res://icon.svg" id="1_fmiqv"]
 
@@ -26,10 +26,19 @@ func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 
+
+
+func _on_hurt_box_area_entered(area):
+	if area.name == \"HitBox\":
+		area.get_parent().queue_free()
+		%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3518"]
 size = Vector2(130, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quvtr"]
+size = Vector2(132, 130)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(24, -51)
@@ -41,8 +50,7 @@ position = Vector2(0.000320435, 0)
 scale = Vector2(1.01563, 1)
 texture = ExtResource("1_fmiqv")
 
-[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0.000320435, 0)
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f3518")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -56,3 +64,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.000305176, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_quvtr")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
