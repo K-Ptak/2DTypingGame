@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/EnemyBasic.gd" id="1_ys6w1"]
 [ext_resource type="Texture2D" uid="uid://xtff6iebfg64" path="res://assets/enemies/rat-Sheet.png" id="2_kluw0"]
-[ext_resource type="FontFile" uid="uid://ckj4xw0ywmbyj" path="res://assets/fonts/Madimi_One/MadimiOne-Regular.ttf" id="3_aigh0"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="3_tglvk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y5cel"]
 atlas = ExtResource("2_kluw0")
@@ -79,7 +79,7 @@ offset_right = 73.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("3_aigh0")
+theme_override_fonts/normal_font = ExtResource("3_tglvk")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 scroll_active = false
