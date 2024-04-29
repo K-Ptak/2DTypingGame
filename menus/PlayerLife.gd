@@ -6,8 +6,7 @@ func player_damaged():
 	if $Hearts.size.x != heart_size:
 		$Hearts.size.x = $Hearts.size.x - heart_size
 	else:
-		#On death
-		$Hearts.size.x = $Hearts.size.x - heart_size
+		get_tree().change_scene_to_file("res://menus/Death_screen.tscn")
 	
 func player_healed():
 	$Hearts.size.x = $Hearts.size.x + heart_size

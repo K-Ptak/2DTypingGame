@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://h18ocnsiw0y8"]
+
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="1_7oii4"]
+[ext_resource type="Script" path="res://menus/UserScore.gd" id="2_ca8ls"]
+
+[node name="Death screen" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+offset_left = 270.0
+offset_top = 275.0
+offset_right = 876.0
+offset_bottom = 357.0
+
+[node name="MainMenuButton" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Start game"
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.162
+anchor_right = 0.497
+anchor_bottom = 0.162
+offset_left = -85.544
+offset_top = -29.976
+offset_right = 87.456
+offset_bottom = 30.024
+theme_override_fonts/font = ExtResource("1_7oii4")
+theme_override_font_sizes/font_size = 41
+text = "You died"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.496
+anchor_top = 0.299
+anchor_right = 0.496
+anchor_bottom = 0.299
+offset_left = -168.392
+offset_top = -26.752
+offset_right = 168.608
+offset_bottom = 26.248
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.5
+anchor_right = 0.285
+anchor_bottom = 0.5
+offset_left = -85.045
+offset_top = -25.5
+offset_right = 84.955
+offset_bottom = 24.5
+theme_override_fonts/font = ExtResource("1_7oii4")
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+
+[node name="UserScore" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.491
+anchor_right = 0.66
+anchor_bottom = 0.491
+offset_left = -108.42
+offset_top = -22.023
+offset_right = 108.58
+offset_bottom = 21.977
+script = ExtResource("2_ca8ls")
+
+[connection signal="pressed" from="Buttons/MainMenuButton" to="Panel/UserScore" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="Panel/UserScore" method="_on_quit_button_pressed"]
