@@ -5,6 +5,7 @@
 
 [node name="Death screen" type="Control"]
 layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -17,6 +18,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 270.0
 offset_top = 275.0
 offset_right = 876.0

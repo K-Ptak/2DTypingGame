@@ -18,3 +18,7 @@ func _on_leaderboards_pressed():
 	#var options = load("res://Menus/Options.tscn").instance()
 	#get_tree().current_scene.add_child(options)
 	pass
+
+
+func _on_soundtrack_finished():
+	$Soundtrack.play()

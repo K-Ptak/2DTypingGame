@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
 [ext_resource type="Texture2D" uid="uid://j15dvkfcnuxe" path="res://assets/placeholder/ph_img.svg" id="2_6r6px"]
-[ext_resource type="AudioStream" uid="uid://bqyv28gprwl4r" path="res://assets/placeholder/music.mp3" id="5_wnrkh"]
+[ext_resource type="AudioStream" uid="uid://d07mfsig0x4na" path="res://assets/music/Morning Wave.wav" id="5_3btes"]
+[ext_resource type="AudioStream" uid="uid://m8emnsulv5sa" path="res://assets/sounds/enemy_death.wav" id="6_stcd4"]
 [ext_resource type="PackedScene" uid="uid://bouigtkjllql2" path="res://menus/GUI.tscn" id="6_wndf1"]
 [ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
-[ext_resource type="AudioStream" uid="uid://6uotn38ekx24" path="res://assets/placeholder/short_sound.mp3" id="6_y2v0v"]
 
 [sub_resource type="Curve2D" id="Curve2D_kxt54"]
 _data = {
@@ -46,11 +46,11 @@ offset_right = 967.0
 offset_bottom = 526.0
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_wnrkh")
+stream = ExtResource("5_3btes")
 autoplay = true
 
 [node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_y2v0v")
+stream = ExtResource("6_stcd4")
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
@@ -58,4 +58,5 @@ stream = ExtResource("6_y2v0v")
 wait_time = 3.0
 autostart = true
 
+[connection signal="finished" from="Soundtrack" to="." method="_on_soundtrack_finished"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

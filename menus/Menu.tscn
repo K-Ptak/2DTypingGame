@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl6bsofnkbwo"]
+[gd_scene load_steps=3 format=3 uid="uid://dl6bsofnkbwo"]
 
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
+[ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -40,8 +41,13 @@ text = "Settings"
 layout_mode = 2
 text = "Quit"
 
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1caw2")
+autoplay = true
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Leaderboards" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Leaderboards" to="." method="_on_leaderboards_pressed"]
+[connection signal="pressed" from="VBoxContainer/Leaderboards" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="finished" from="Soundtrack" to="." method="_on_soundtrack_finished"]
