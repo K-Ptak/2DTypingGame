@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=9 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GameTime.gd" id="1_ysxcr"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="4_06uhq"]
 [ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
 [ext_resource type="Script" path="res://menus/PlayerLife.gd" id="6_jo8ew"]
+[ext_resource type="Script" path="res://menus/PauseScreen.gd" id="8_su106"]
 
 [node name="GUI" type="MarginContainer"]
 anchors_preset = 10
@@ -138,3 +139,40 @@ offset_right = 192.0
 offset_bottom = 64.0
 texture = ExtResource("6_7wtko")
 stretch_mode = 1
+
+[node name="PauseScreen" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("8_su106")
+
+[node name="Label" type="Label" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.443
+anchor_right = 0.49
+anchor_bottom = 0.443
+offset_left = -114.48
+offset_top = -25.733
+offset_right = 153.52
+offset_bottom = 26.267
+theme_override_fonts/font = ExtResource("4_06uhq")
+theme_override_font_sizes/font_size = 51
+text = "--- Paused ---"
+
+[node name="ResumeButton" type="Button" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.492
+anchor_top = 0.573
+anchor_right = 0.492
+anchor_bottom = 0.573
+offset_left = -139.784
+offset_top = -23.763
+offset_right = 179.216
+offset_bottom = 23.237
+theme_override_fonts/font = ExtResource("4_06uhq")
+theme_override_font_sizes/font_size = 38
+text = "Resume"
+
+[connection signal="pressed" from="PauseScreen/ResumeButton" to="PauseScreen" method="_on_resume_button_pressed"]

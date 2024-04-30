@@ -40,10 +40,10 @@ rotation = -0.00215934
 unique_name_in_owner = true
 
 [node name="GUI" parent="Player" instance=ExtResource("6_wndf1")]
-offset_left = -955.0
+offset_left = -971.0
 offset_top = -537.0
 offset_right = 967.0
-offset_bottom = 526.0
+offset_bottom = 544.0
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3btes")
