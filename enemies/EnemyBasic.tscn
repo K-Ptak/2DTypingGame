@@ -83,6 +83,7 @@ theme_override_fonts/normal_font = ExtResource("3_tglvk")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="HitBox" type="Area2D" parent="."]
 
