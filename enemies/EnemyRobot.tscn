@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsur7niw3vkyb"]
+
+[ext_resource type="Script" path="res://enemies/EnemyRobot.gd" id="1_sxe13"]
+[ext_resource type="Texture2D" uid="uid://je1oab67qxka" path="res://assets/enemies/robot-Sheet.png" id="2_je6t5"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="3_tawp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ck2e"]
+atlas = ExtResource("2_je6t5")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tjyr"]
+atlas = ExtResource("2_je6t5")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lobsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ck2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tjyr")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3l3x"]
+size = Vector2(96, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxeah"]
+size = Vector2(96, 105)
+
+[node name="EnemyShooter" type="CharacterBody2D"]
+position = Vector2(879, 394)
+script = ExtResource("1_sxe13")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.375, 1.375)
+sprite_frames = SubResource("SpriteFrames_lobsw")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 5.5)
+shape = SubResource("RectangleShape2D_p3l3x")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -75.0
+offset_right = 73.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_tawp3")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-12, 5.5)
+shape = SubResource("RectangleShape2D_xxeah")

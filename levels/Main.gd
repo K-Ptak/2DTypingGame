@@ -4,7 +4,7 @@ extends Node2D
 
 var active_enemy = null
 var current_letter_index: int = -1
-var enemyPool = [preload("res://enemies/EnemyBasic.tscn"), preload("res://enemies/EnemySprinter.tscn"), preload("res://enemies/EnemySlow.tscn")]
+var enemyPool = [preload("res://enemies/EnemyBasic.tscn"), preload("res://enemies/EnemySprinter.tscn"), preload("res://enemies/EnemySlow.tscn"), preload("res://enemies/EnemyRobot.tscn")]
 
 	
 func _on_enemy_spawn_timer_timeout():

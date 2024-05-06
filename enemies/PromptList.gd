@@ -6,7 +6,8 @@ func readFile():
 	
 	while !file.eof_reached():
 		var line: String = file.get_line()
-		content.append(line)
+		if line.length() < 8 && line.length() > 2:
+			content.append(line)
 	return content
 
 var words = readFile()

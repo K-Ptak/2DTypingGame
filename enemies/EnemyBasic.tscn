@@ -4,23 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://xtff6iebfg64" path="res://assets/enemies/rat-Sheet.png" id="2_kluw0"]
 [ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="3_tglvk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y5cel"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t35vk"]
 atlas = ExtResource("2_kluw0")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_br08t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5kl2"]
 atlas = ExtResource("2_kluw0")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_onemg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y7mr"]
 atlas = ExtResource("2_kluw0")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttvdx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qgkv"]
 atlas = ExtResource("2_kluw0")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tg4l4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uioh"]
 atlas = ExtResource("2_kluw0")
 region = Rect2(400, 0, 100, 100)
 
@@ -28,30 +28,30 @@ region = Rect2(400, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y5cel")
+"texture": SubResource("AtlasTexture_t35vk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_br08t")
+"texture": SubResource("AtlasTexture_d5kl2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_onemg")
+"texture": SubResource("AtlasTexture_4y7mr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ttvdx")
+"texture": SubResource("AtlasTexture_1qgkv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tg4l4")
+"texture": SubResource("AtlasTexture_5uioh")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3l3x"]
-size = Vector2(91, 61)
+size = Vector2(96, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxeah"]
-size = Vector2(93, 63)
+size = Vector2(96, 105)
 
 [node name="EnemyBasic" type="CharacterBody2D"]
 position = Vector2(879, 394)
@@ -60,8 +60,8 @@ script = ExtResource("1_ys6w1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9.05991e-06, 0)
 sprite_frames = SubResource("SpriteFrames_ekwe3")
-autoplay = "default"
-frame_progress = 0.260265
+animation = &"new_animation"
+autoplay = "new_animation"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 17.5)
