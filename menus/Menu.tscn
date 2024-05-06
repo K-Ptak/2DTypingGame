@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl6bsofnkbwo"]
+[gd_scene load_steps=10 format=3 uid="uid://dl6bsofnkbwo"]
 
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
 [ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
+[ext_resource type="Texture2D" uid="uid://jqxa3p8nao7y" path="res://assets/GUI/keyboard.png" id="2_7i2gt"]
+[ext_resource type="Texture2D" uid="uid://wv8an4yw7rxn" path="res://assets/GUI/leaderboards.png" id="3_bj6ex"]
+[ext_resource type="Texture2D" uid="uid://bglohvefukin3" path="res://assets/GUI/settings.png" id="4_lw7wv"]
+[ext_resource type="Texture2D" uid="uid://38571eokbv6k" path="res://assets/GUI/turnoff.png" id="5_0mlvc"]
+[ext_resource type="Texture2D" uid="uid://clgaa3smiqwts" path="res://assets/GUI/Logo.svg" id="7_7rexa"]
+
+[sub_resource type="Gradient" id="Gradient_cgw1l"]
+colors = PackedColorArray(0.211765, 0, 0.431373, 1, 1, 1, 0.690196, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0hu1v"]
+gradient = SubResource("Gradient_cgw1l")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,9 +25,23 @@ offset_left = -576.0
 offset_top = -324.0
 offset_right = 576.0
 offset_bottom = 324.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_u7lc4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -695.0
+offset_top = -479.0
+offset_right = -695.0
+offset_bottom = -479.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.22042, 2.75623)
+texture = SubResource("GradientTexture1D_0hu1v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -28,26 +53,34 @@ offset_bottom = 387.0
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Start game"
+icon = ExtResource("2_7i2gt")
 
 [node name="Leaderboards" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Leaderboards"
+icon = ExtResource("3_bj6ex")
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Settings"
+icon = ExtResource("4_lw7wv")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+icon = ExtResource("5_0mlvc")
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_1caw2")
 autoplay = true
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(584, 34)
+scale = Vector2(3.44611, 3.25792)
+texture = ExtResource("7_7rexa")
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Leaderboards" to="." method="_on_leaderboards_pressed"]
-[connection signal="pressed" from="VBoxContainer/Leaderboards" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="finished" from="Soundtrack" to="." method="_on_soundtrack_finished"]
