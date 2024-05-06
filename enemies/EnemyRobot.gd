@@ -2,7 +2,7 @@ extends Enemy
 
 class_name EnemyRobot
 
-const SPEED = 100
+const SPEED = 300
 @export var SCORE = 50
 
 

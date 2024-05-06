@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=10 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GameTime.gd" id="1_ysxcr"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
@@ -6,8 +6,25 @@
 [ext_resource type="Script" path="res://menus/Score.gd" id="4_0en27"]
 [ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="4_06uhq"]
 [ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
-[ext_resource type="Script" path="res://menus/PlayerLife.gd" id="6_jo8ew"]
+[ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
 [ext_resource type="Script" path="res://menus/PauseScreen.gd" id="8_su106"]
+
+[sub_resource type="GDScript" id="GDScript_rj55e"]
+resource_local_to_scene = true
+script/source = "extends Control
+
+var heart_size: int = 64
+
+func player_damaged():
+	if $Hearts.size.x != heart_size:
+		%PlayerHurtSound.play()
+		$Hearts.size.x = $Hearts.size.x - heart_size
+	else:
+		get_tree().change_scene_to_file(\"res://menus/Death_screen.tscn\")
+	
+func player_healed():
+	$Hearts.size.x = $Hearts.size.x + heart_size
+"
 
 [node name="GUI" type="MarginContainer"]
 anchors_preset = 10
@@ -131,7 +148,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 192.0
 offset_bottom = 64.0
-script = ExtResource("6_jo8ew")
+script = SubResource("GDScript_rj55e")
 
 [node name="Hearts" type="TextureRect" parent="CanvasLayer/PlayerLife"]
 layout_mode = 0
@@ -174,5 +191,9 @@ offset_bottom = 23.237
 theme_override_fonts/font = ExtResource("4_06uhq")
 theme_override_font_sizes/font_size = 38
 text = "Resume"
+
+[node name="PlayerHurtSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_fy6iv")
 
 [connection signal="pressed" from="PauseScreen/ResumeButton" to="PauseScreen" method="_on_resume_button_pressed"]
