@@ -7,7 +7,6 @@
 [ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="4_06uhq"]
 [ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
 [ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
-[ext_resource type="Script" path="res://menus/PauseScreen.gd" id="8_su106"]
 
 [sub_resource type="GDScript" id="GDScript_rj55e"]
 resource_local_to_scene = true
@@ -24,6 +23,16 @@ func player_damaged():
 	
 func player_healed():
 	$Hearts.size.x = $Hearts.size.x + heart_size
+"
+
+[sub_resource type="GDScript" id="GDScript_vm1x0"]
+script/source = "extends Panel
+
+
+func _on_resume_button_pressed():
+	print(\"test\")
+	%Player/GUI/PauseScreen.visible = true
+	get_tree().paused = false
 "
 
 [node name="GUI" type="MarginContainer"]
@@ -158,9 +167,10 @@ texture = ExtResource("6_7wtko")
 stretch_mode = 1
 
 [node name="PauseScreen" type="Panel" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
-script = ExtResource("8_su106")
+script = SubResource("GDScript_vm1x0")
 
 [node name="Label" type="Label" parent="PauseScreen"]
 layout_mode = 1
@@ -177,23 +187,6 @@ theme_override_fonts/font = ExtResource("4_06uhq")
 theme_override_font_sizes/font_size = 51
 text = "--- Paused ---"
 
-[node name="ResumeButton" type="Button" parent="PauseScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.492
-anchor_top = 0.573
-anchor_right = 0.492
-anchor_bottom = 0.573
-offset_left = -139.784
-offset_top = -23.763
-offset_right = 179.216
-offset_bottom = 23.237
-theme_override_fonts/font = ExtResource("4_06uhq")
-theme_override_font_sizes/font_size = 38
-text = "Resume"
-
 [node name="PlayerHurtSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_fy6iv")
-
-[connection signal="pressed" from="PauseScreen/ResumeButton" to="PauseScreen" method="_on_resume_button_pressed"]

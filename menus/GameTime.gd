@@ -7,13 +7,14 @@ var seconds: int = 0
 var miliseconds: int = 0
 
 func _process(delta) -> void:
-	time += delta
-	miliseconds = fmod(time, 1) * 100
-	seconds = fmod(time, 60)
-	minutes = fmod(time, 3600) / 60
-	$Minutes.text = "%02d:" % minutes
-	$Seconds.text = "%02d." % seconds
-	$Miliseconds.text = "%03d" % miliseconds
+	if !%PauseScreen.visible:
+		time += delta
+		miliseconds = fmod(time, 1) * 100
+		seconds = fmod(time, 60)
+		minutes = fmod(time, 3600) / 60
+		$Minutes.text = "%02d:" % minutes
+		$Seconds.text = "%02d." % seconds
+		$Miliseconds.text = "%03d" % miliseconds
 
 func stop() -> void:
 	set_process(false)
