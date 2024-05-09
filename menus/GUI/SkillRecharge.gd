@@ -1,6 +1,6 @@
 extends Sprite2D
 
-func _process(delta):
+func _process(_delta):
 	%CountdownLabel.text = str(round(%CountdownTimer.time_left))
 
 func SkillRecharge():
