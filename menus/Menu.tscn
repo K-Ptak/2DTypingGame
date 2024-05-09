@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dl6bsofnkbwo"]
+[gd_scene load_steps=17 format=3 uid="uid://dl6bsofnkbwo"]
 
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
 [ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://wv8an4yw7rxn" path="res://assets/GUI/leaderboards.png" id="3_bj6ex"]
 [ext_resource type="Texture2D" uid="uid://bglohvefukin3" path="res://assets/GUI/settings.png" id="4_lw7wv"]
 [ext_resource type="Texture2D" uid="uid://38571eokbv6k" path="res://assets/GUI/turnoff.png" id="5_0mlvc"]
+[ext_resource type="Script" path="res://menus/settings_box.gd" id="7_0vj54"]
 [ext_resource type="Texture2D" uid="uid://clgaa3smiqwts" path="res://assets/GUI/Logo.svg" id="7_7rexa"]
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="8_is3d6"]
-[ext_resource type="PackedScene" uid="uid://fohx5enkv5k0" path="res://menus/volume_slider.tscn" id="8_q0qsk"]
-[ext_resource type="Texture2D" uid="uid://8vy574ni535b" path="res://assets/GUI/arrow_left.png" id="10_4powo"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="7_n2pr8"]
+[ext_resource type="PackedScene" uid="uid://fohx5enkv5k0" path="res://menus/volume_slider.tscn" id="8_urla1"]
+[ext_resource type="Texture2D" uid="uid://8vy574ni535b" path="res://assets/GUI/arrow_left.png" id="9_d0jjb"]
 [ext_resource type="AudioStream" uid="uid://m8emnsulv5sa" path="res://assets/sounds/enemy_death.wav" id="10_kvymv"]
+[ext_resource type="Script" path="res://menus/LeaderboardBox.gd" id="13_bm7xb"]
+[ext_resource type="PackedScene" uid="uid://ds01bfj6doktf" path="res://menus/ScorePanel.tscn" id="14_iur8v"]
 
 [sub_resource type="Gradient" id="Gradient_jkkqr"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.764706, 0.168627, 1)
@@ -51,6 +54,11 @@ grow_vertical = 2
 scale = Vector2(2.22042, 2.75623)
 texture = SubResource("GradientTexture2D_j4jb6")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(584, -62)
+scale = Vector2(3.44611, 3.25792)
+texture = ExtResource("7_7rexa")
+
 [node name="ButtonBox" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -90,119 +98,186 @@ stream = ExtResource("2_1caw2")
 autoplay = true
 bus = &"Music"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(584, -62)
-scale = Vector2(3.44611, 3.25792)
-texture = ExtResource("7_7rexa")
-
 [node name="SettingsBox" type="Panel" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -484.5
-offset_top = -537.0
-offset_right = 484.5
+offset_top = 72.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+script = ExtResource("7_0vj54")
 
 [node name="TestSoundButton" type="Button" parent="SettingsBox"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.33
-anchor_top = 0.5
-anchor_right = 0.33
-anchor_bottom = 0.5
-offset_left = -113.27
-offset_top = -71.5
-offset_right = 113.73
-offset_bottom = 71.5
+anchor_left = 0.277
+anchor_top = 0.502
+anchor_right = 0.277
+anchor_bottom = 0.502
+offset_left = -113.104
+offset_top = -71.296
+offset_right = 113.896
+offset_bottom = 71.704
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_is3d6")
+theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 37
 text = "Play sound"
 
 [node name="Master Volume" type="Label" parent="SettingsBox"]
-layout_mode = 0
-offset_left = 570.5
-offset_top = 150.0
-offset_right = 754.5
-offset_bottom = 185.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.766
+anchor_top = 0.252
+anchor_right = 0.766
+anchor_bottom = 0.252
+offset_left = -91.432
+offset_top = -17.296
+offset_right = 92.568
+offset_bottom = 17.704
 theme_override_font_sizes/font_size = 25
 text = "Master Volume"
 
-[node name="Master" parent="SettingsBox" instance=ExtResource("8_q0qsk")]
-layout_mode = 0
-offset_left = 560.5
-offset_top = 208.0
-offset_right = 774.5
-offset_bottom = 224.0
+[node name="Master" parent="SettingsBox" instance=ExtResource("8_urla1")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.766
+anchor_top = 0.338
+anchor_right = 0.766
+anchor_bottom = 0.338
+offset_left = -107.432
+offset_top = -8.02402
+offset_right = 106.568
+offset_bottom = 7.97598
 ticks_on_borders = true
 bus_name = "Master"
 
 [node name="Music Volume" type="Label" parent="SettingsBox"]
 layout_mode = 0
-offset_left = 584.5
-offset_top = 260.0
-offset_right = 753.5
-offset_bottom = 295.0
+offset_left = 797.0
+offset_top = 272.0
+offset_right = 966.0
+offset_bottom = 307.0
 theme_override_font_sizes/font_size = 25
 text = "Music Volume
 "
 
-[node name="Music" parent="SettingsBox" instance=ExtResource("8_q0qsk")]
+[node name="Music" parent="SettingsBox" instance=ExtResource("8_urla1")]
 layout_mode = 0
-offset_left = 561.0
-offset_top = 314.0
-offset_right = 775.0
-offset_bottom = 330.0
+offset_left = 778.0
+offset_top = 316.0
+offset_right = 992.0
+offset_bottom = 332.0
 ticks_on_borders = true
 bus_name = "Music"
 
 [node name="Sfx Volume" type="Label" parent="SettingsBox"]
 layout_mode = 0
-offset_left = 603.5
-offset_top = 368.0
-offset_right = 739.5
-offset_bottom = 403.0
+offset_left = 811.0
+offset_top = 366.0
+offset_right = 947.0
+offset_bottom = 401.0
 theme_override_font_sizes/font_size = 25
 text = "Sfx Volume"
 
-[node name="Sfx" parent="SettingsBox" instance=ExtResource("8_q0qsk")]
+[node name="Sfx" parent="SettingsBox" instance=ExtResource("8_urla1")]
 layout_mode = 0
-offset_left = 561.0
-offset_top = 422.0
-offset_right = 775.0
-offset_bottom = 438.0
+offset_left = 776.0
+offset_top = 427.0
+offset_right = 990.0
+offset_bottom = 443.0
 bus_name = "Sfx"
 
 [node name="ExitSettingsButton" type="TextureButton" parent="SettingsBox"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.059
-anchor_top = 0.091
-anchor_right = 0.059
-anchor_bottom = 0.091
-offset_left = -31.671
-offset_top = -31.867
-offset_right = 32.329
-offset_bottom = 32.133
+anchor_left = 0.116
+anchor_top = 0.177
+anchor_right = 0.116
+anchor_bottom = 0.177
+offset_left = -31.727
+offset_top = -32.267
+offset_right = 32.273
+offset_bottom = 31.733
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("10_4powo")
+texture_normal = ExtResource("9_d0jjb")
 
-[node name="TestSound" type="AudioStreamPlayer" parent="."]
+[node name="TestSound" type="AudioStreamPlayer" parent="SettingsBox"]
 unique_name_in_owner = true
 stream = ExtResource("10_kvymv")
 bus = &"Sfx"
+
+[node name="LeaderboardBox" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_bm7xb")
+score_panel_scene = ExtResource("14_iur8v")
+
+[node name="ExitLeaderboardButton" type="TextureButton" parent="LeaderboardBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_top = 0.121
+anchor_right = 0.057
+anchor_bottom = 0.121
+offset_left = -27.664
+offset_top = -32.696
+offset_right = 36.336
+offset_bottom = 31.304
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_d0jjb")
+
+[node name="Label" type="Label" parent="LeaderboardBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.108
+anchor_right = 0.5
+anchor_bottom = 0.108
+offset_left = -148.5
+offset_top = -42.208
+offset_right = 148.5
+offset_bottom = 41.792
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 57
+text = "Highscores"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.589
+anchor_right = 0.5
+anchor_bottom = 0.589
+offset_left = -459.0
+offset_top = -194.264
+offset_right = 466.0
+offset_bottom = 193.736
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreContainer" type="VBoxContainer" parent="LeaderboardBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 100
 
 [connection signal="pressed" from="ButtonBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ButtonBox/Leaderboards" to="." method="_on_leaderboards_pressed"]
 [connection signal="pressed" from="ButtonBox/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="ButtonBox/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="finished" from="Soundtrack" to="." method="_on_soundtrack_finished"]
-[connection signal="pressed" from="SettingsBox/TestSoundButton" to="." method="_on_test_sound_button_pressed"]
-[connection signal="pressed" from="SettingsBox/ExitSettingsButton" to="." method="_on_exit_settings_button_pressed"]
+[connection signal="pressed" from="SettingsBox/TestSoundButton" to="SettingsBox" method="_on_test_sound_button_pressed"]
+[connection signal="pressed" from="SettingsBox/ExitSettingsButton" to="SettingsBox" method="_on_exit_settings_button_pressed"]
+[connection signal="pressed" from="LeaderboardBox/ExitLeaderboardButton" to="LeaderboardBox" method="_on_exit_leaderboard_button_pressed"]

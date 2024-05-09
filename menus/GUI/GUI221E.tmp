@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=15 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cmkgafiqcmsm4" path="res://menus/GUI/skill.tscn" id="6_2wh81"]
 [ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
 [ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
-[ext_resource type="PackedScene" uid="uid://tuh0636ori41" path="res://menus/GUI/hs_game_over_screen.tscn" id="10_f08cn"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="10_pdlc4"]
+[ext_resource type="Script" path="res://menus/GUI/HSGameOverScreen.gd" id="10_ppuk5"]
 [ext_resource type="PackedScene" uid="uid://ckj67v4jqu7a2" path="res://menus/GUI/pause_screen.tscn" id="10_r0l0h"]
 [ext_resource type="PackedScene" uid="uid://cfa8awhbe8fm6" path="res://menus/GUI/game_over_screen.tscn" id="11_wv843"]
 [ext_resource type="AudioStream" uid="uid://b7gw5yolqn3g5" path="res://assets/sounds/player_death.wav" id="13_586rv"]
@@ -18,15 +19,6 @@ resource_local_to_scene = true
 script/source = "extends Control
 
 var heart_size: int = 64
-var temp_highscore:int = 0
-
-func _ready():
-	var hs_to_beat = 0000000
-	for hs in DataManagement.save_data.highscores:
-		if hs_to_beat < int(hs):
-			hs_to_beat = int(hs)
-
-	temp_highscore = hs_to_beat
 
 func player_damaged():
 	if $Hearts.size.x != heart_size:
@@ -36,26 +28,11 @@ func player_damaged():
 		get_parent().get_parent().get_parent().get_parent().delete_all_entities()
 		get_parent().get_child(1).visible = !get_parent().get_child(1).visible
 		%CanvasLayer.visible = !%CanvasLayer.visible
-		if(int(%Score.text) > temp_highscore):
-			highscore_over_screen()
-		else:
-			game_over_screen()
+		game_over_screen()
 	
 func player_healed():
 	$Hearts.size.x = $Hearts.size.x + heart_size
 
-
-func highscore_over_screen():
-	%HSGameOverScreen.visible = !%HSGameOverScreen.visible
-	var minutes = %Minutes.text
-	var seconds = %Seconds.text
-	var miliseconds = %Miliseconds.text
-	
-	%HSGameOverScreen/UserTime.text = str(minutes+seconds+miliseconds)
-	%HSGameOverScreen/UserScore.text = %Score.text
-	
-	get_tree().paused = !get_tree().paused
-	%PlayerDeathSound.play()
 
 func game_over_screen():
 	%GameOverScreen.visible = !%GameOverScreen.visible
@@ -68,6 +45,9 @@ func game_over_screen():
 	
 	get_tree().paused = !get_tree().paused
 	%PlayerDeathSound.play()
+	
+func new_highscore_screen():
+	pass
 "
 
 [node name="GUI" type="MarginContainer"]
@@ -213,16 +193,142 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="HSGameOverScreen" parent="." instance=ExtResource("10_f08cn")]
+[node name="HSGameOverScreen" type="Panel" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("10_ppuk5")
+
+[node name="Label" type="Label" parent="HSGameOverScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.162
+anchor_right = 0.497
+anchor_bottom = 0.162
+offset_left = -151.544
+offset_top = -32.976
+offset_right = 153.456
+offset_bottom = 27.024
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 41
+text = "New Highscore!"
+
+[node name="UserTime" type="Label" parent="HSGameOverScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.496
+anchor_top = 0.477
+anchor_right = 0.496
+anchor_bottom = 0.477
+offset_left = -65.392
+offset_top = -25.096
+offset_right = 65.608
+offset_bottom = 24.904
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+
+[node name="Label3" type="Label" parent="HSGameOverScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.387
+anchor_right = 0.5
+anchor_bottom = 0.387
+offset_left = -86.0
+offset_top = -24.776
+offset_right = 84.0
+offset_bottom = 25.224
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 32
+text = "Your Time:"
+
+[node name="UserScore" type="Label" parent="HSGameOverScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.275
+anchor_right = 0.498
+anchor_bottom = 0.275
+offset_left = -85.696
+offset_top = -24.2
+offset_right = 86.304
+offset_bottom = 24.8
+theme_override_font_sizes/font_size = 35
+text = "000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="HSGameOverScreen"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.788
+anchor_right = 0.498
+anchor_bottom = 0.788
+offset_left = -302.696
+offset_top = -15.624
+offset_right = 303.304
+offset_bottom = 15.376
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="MainMenuButton" type="Button" parent="HSGameOverScreen"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.725
+anchor_right = 0.498
+anchor_bottom = 0.725
+offset_left = -302.696
+offset_top = -15.8
+offset_right = 303.304
+offset_bottom = 15.2
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main menu"
+
+[node name="PlayerName" type="TextEdit" parent="HSGameOverScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.6
+anchor_right = 0.49
+anchor_bottom = 0.6
+offset_left = -134.48
+offset_top = -24.8
+offset_right = 134.52
+offset_bottom = 24.2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "-- enter your name --
+"
+
+[node name="HSSaveButton" type="Button" parent="HSGameOverScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.653
+anchor_top = 0.6
+anchor_right = 0.653
+anchor_bottom = 0.6
+offset_left = -28.256
+offset_top = -18.8
+offset_right = 27.744
+offset_bottom = 19.2
+text = "Save"
 
 [node name="PlayerHurtSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_fy6iv")
-bus = &"Sfx"
 
 [node name="PlayerDeathSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("13_586rv")
-bus = &"Sfx"
+
+[connection signal="pressed" from="HSGameOverScreen/QuitButton" to="HSGameOverScreen" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HSGameOverScreen/MainMenuButton" to="HSGameOverScreen" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="HSGameOverScreen/HSSaveButton" to="HSGameOverScreen" method="_on_hs_save_button_pressed"]

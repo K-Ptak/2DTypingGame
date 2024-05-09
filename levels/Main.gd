@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready():
 	if (get_tree().paused == true):
-		get_tree().paused = !get_tree().paused
+		get_tree().paused = !get_tree().paused	
 
 var active_enemy = null
 var current_letter_index: int = -1
@@ -14,7 +14,6 @@ preload("res://enemies/EnemySprinter.tscn"),
 preload("res://enemies/EnemySlow.tscn"),
 preload("res://enemies/EnemyRobot.tscn")
 ]
-
 	
 func _on_enemy_spawn_timer_timeout():
 	var rng = RandomNumberGenerator.new()

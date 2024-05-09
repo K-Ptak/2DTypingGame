@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://tuh0636ori41"]
+
+[ext_resource type="Script" path="res://menus/GUI/HSGameOverScreen.gd" id="1_fvhhc"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="2_7m3ug"]
+[ext_resource type="AudioStream" uid="uid://cukdeiwynlgm5" path="res://assets/sounds/highscore_saved.wav" id="3_pcu5u"]
+
+[node name="HSGameOverScreen" type="Panel"]
+visible = false
+script = ExtResource("1_fvhhc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.162
+anchor_right = 0.497
+anchor_bottom = 0.162
+offset_left = -151.544
+offset_top = -32.976
+offset_right = 153.456
+offset_bottom = 27.024
+theme_override_fonts/font = ExtResource("2_7m3ug")
+theme_override_font_sizes/font_size = 41
+text = "New Highscore!"
+
+[node name="UserTime" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.496
+anchor_top = 0.477
+anchor_right = 0.496
+anchor_bottom = 0.477
+offset_left = -65.392
+offset_top = -25.096
+offset_right = 65.608
+offset_bottom = 24.904
+theme_override_fonts/font = ExtResource("2_7m3ug")
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.387
+anchor_right = 0.5
+anchor_bottom = 0.387
+offset_left = -86.0
+offset_top = -24.776
+offset_right = 84.0
+offset_bottom = 25.224
+theme_override_fonts/font = ExtResource("2_7m3ug")
+theme_override_font_sizes/font_size = 32
+text = "Your Time:"
+
+[node name="UserScore" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.275
+anchor_right = 0.498
+anchor_bottom = 0.275
+offset_left = -85.696
+offset_top = -24.2
+offset_right = 86.304
+offset_bottom = 24.8
+theme_override_font_sizes/font_size = 35
+text = "000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.788
+anchor_right = 0.498
+anchor_bottom = 0.788
+offset_left = -302.696
+offset_top = -15.624
+offset_right = 303.304
+offset_bottom = 15.376
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="MainMenuButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.725
+anchor_right = 0.498
+anchor_bottom = 0.725
+offset_left = -302.696
+offset_top = -15.8
+offset_right = 303.304
+offset_bottom = 15.2
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main menu"
+
+[node name="PlayerName" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.6
+anchor_right = 0.49
+anchor_bottom = 0.6
+offset_left = -134.48
+offset_top = -24.8
+offset_right = 134.52
+offset_bottom = 24.2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "-- enter your name --
+"
+
+[node name="HSSaveButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.653
+anchor_top = 0.6
+anchor_right = 0.653
+anchor_bottom = 0.6
+offset_left = -28.256
+offset_top = -18.8
+offset_right = 27.744
+offset_bottom = 19.2
+text = "Save"
+
+[node name="HSSaveSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_pcu5u")
+bus = &"Sfx"
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="HSSaveButton" to="." method="_on_hs_save_button_pressed"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://nri63etewb53"]
+
+[ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_m7vsh"]
+[ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_frv2r"]
+
+[node name="GameTime" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.029
+anchor_right = 0.5
+anchor_bottom = 0.029
+offset_left = -133.0
+offset_top = -18.792
+offset_right = 134.0
+offset_bottom = 18.208
+script = ExtResource("1_m7vsh")
+
+[node name="Minutes" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -18.5
+offset_right = -20.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_frv2r")
+text = "00:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seconds" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -18.5
+offset_right = 26.5
+offset_bottom = 18.5
+theme_override_fonts/font = ExtResource("2_frv2r")
+text = "00:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Miliseconds" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.5
+offset_top = -18.5
+offset_right = 81.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_frv2r")
+text = "000"
+vertical_alignment = 1

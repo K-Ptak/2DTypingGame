@@ -21,7 +21,8 @@ aseprite_executable_path="C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ase
 
 [autoload]
 
-PromptList="*res://enemies/PromptList.gd"
+PromptList="*res://autoloads/PromptList.gd"
+DataManagement="*res://autoloads/DataManagement.gd"
 
 [display]
 

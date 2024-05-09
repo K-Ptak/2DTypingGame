@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmkgafiqcmsm4"]
+
+[ext_resource type="Texture2D" uid="uid://bwgkoqbyto6tg" path="res://assets/GUI/skill_fireball.png" id="1_v06yj"]
+[ext_resource type="Script" path="res://menus/GUI/SkillRecharge.gd" id="2_rasyr"]
+[ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="3_7cdkm"]
+[ext_resource type="AudioStream" uid="uid://bdix6sychynii" path="res://assets/sounds/fireball_sound.wav" id="4_ldeku"]
+
+[sub_resource type="Gradient" id="Gradient_v17ca"]
+offsets = PackedFloat32Array(0, 0.993151)
+colors = PackedColorArray(1, 0.4, 0.239216, 0.101961, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p0ecg"]
+gradient = SubResource("Gradient_v17ca")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_harvb"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0
+angle_max = 60.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+orbit_velocity_max = 180.0
+radial_velocity_max = 180.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 30.0
+linear_accel_max = 30.0
+scale_min = 10.0
+scale_max = 10.0
+color = Color(0.952941, 0.533333, 0.227451, 1)
+color_ramp = SubResource("GradientTexture1D_p0ecg")
+
+[node name="Skill" type="Sprite2D"]
+position = Vector2(1797, 992)
+scale = Vector2(0.765969, 0.796433)
+texture = ExtResource("1_v06yj")
+script = ExtResource("2_rasyr")
+
+[node name="RechargePanel" type="Panel" parent="."]
+visible = false
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 1013.0
+offset_bottom = 625.0
+scale = Vector2(0.258201, 0.1488)
+
+[node name="CountdownLabel" type="Label" parent="RechargePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1162.0
+offset_bottom = 673.0
+theme_override_fonts/font = ExtResource("3_7cdkm")
+theme_override_font_sizes/font_size = 666
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="RechargePanel"]
+unique_name_in_owner = true
+wait_time = 60.0
+one_shot = true
+
+[node name="SkillAudio" type="AudioStreamPlayer" parent="RechargePanel"]
+stream = ExtResource("4_ldeku")
+
+[node name="ExplosionEffect" type="GPUParticles2D" parent="RechargePanel"]
+position = Vector2(-3661.28, -3435.83)
+scale = Vector2(17.8929, 17.8929)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_harvb")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+
+[connection signal="timeout" from="RechargePanel/CountdownTimer" to="." method="_on_countdown_timer_timeout"]
