@@ -44,7 +44,7 @@ animations = [{
 size = Vector2(174, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt457"]
-size = Vector2(174, 174)
+size = Vector2(177, 177)
 
 [node name="EnemySlow" type="CharacterBody2D"]
 script = ExtResource("1_lv8pi")
@@ -56,7 +56,6 @@ sprite_frames = SubResource("SpriteFrames_w8g44")
 autoplay = "default"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(11, 10)
 shape = SubResource("RectangleShape2D_uw8q3")
 
@@ -72,6 +71,8 @@ offset_right = 82.0
 offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("3_dwpvo")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
@@ -81,6 +82,5 @@ metadata/_edit_use_anchors_ = true
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2(11, 10)
+position = Vector2(11.5, 9.5)
 shape = SubResource("RectangleShape2D_xt457")

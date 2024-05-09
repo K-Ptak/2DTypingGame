@@ -21,3 +21,6 @@ func on_enemy_defeat(new_score):
 	
 	%Score.text = "%s%s" % [zeroes,score]
 	%Multiplier.text = "x%s" % multiplier 
+
+func reset_multiplier():
+	multiplier = 1

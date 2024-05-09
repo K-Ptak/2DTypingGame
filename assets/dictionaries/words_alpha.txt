@@ -113105,8 +113105,6 @@ firearm
 firearmed
 firearms
 fireback
-fireball
-fireballs
 firebase
 firebases
 firebed

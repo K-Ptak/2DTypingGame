@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://h18ocnsiw0y8"]
+[gd_scene load_steps=3 format=3 uid="uid://qer5is0ulr8y"]
 
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="1_7oii4"]
-[ext_resource type="Script" path="res://menus/UserScore.gd" id="2_ca8ls"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="1_rkow5"]
+[ext_resource type="Script" path="res://menus/GUI/UserScore.gd" id="2_4mg4o"]
 
 [node name="Death screen" type="Control"]
 layout_mode = 3
@@ -43,7 +43,7 @@ offset_left = -85.544
 offset_top = -29.976
 offset_right = 87.456
 offset_bottom = 30.024
-theme_override_fonts/font = ExtResource("1_7oii4")
+theme_override_fonts/font = ExtResource("1_rkow5")
 theme_override_font_sizes/font_size = 41
 text = "You died"
 
@@ -70,7 +70,7 @@ offset_left = -85.045
 offset_top = -25.5
 offset_right = 84.955
 offset_bottom = 24.5
-theme_override_fonts/font = ExtResource("1_7oii4")
+theme_override_fonts/font = ExtResource("1_rkow5")
 theme_override_font_sizes/font_size = 32
 text = "Score:"
 
@@ -86,7 +86,7 @@ offset_left = -108.42
 offset_top = -22.023
 offset_right = 108.58
 offset_bottom = 21.977
-script = ExtResource("2_ca8ls")
+script = ExtResource("2_4mg4o")
 
 [connection signal="pressed" from="Buttons/MainMenuButton" to="Panel/UserScore" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Panel/UserScore" method="_on_quit_button_pressed"]

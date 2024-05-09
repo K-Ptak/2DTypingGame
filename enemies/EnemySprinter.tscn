@@ -44,7 +44,7 @@ animations = [{
 size = Vector2(71, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ao0k"]
-size = Vector2(73, 46)
+size = Vector2(73, 47)
 
 [node name="EnemySprinter" type="CharacterBody2D"]
 script = ExtResource("1_hywgg")
@@ -71,6 +71,8 @@ offset_right = 73.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("3_yulkt")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
@@ -79,5 +81,5 @@ scroll_active = false
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-1.5, 5)
+position = Vector2(-1.5, 4.5)
 shape = SubResource("RectangleShape2D_3ao0k")

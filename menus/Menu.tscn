@@ -8,13 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://38571eokbv6k" path="res://assets/GUI/turnoff.png" id="5_0mlvc"]
 [ext_resource type="Texture2D" uid="uid://clgaa3smiqwts" path="res://assets/GUI/Logo.svg" id="7_7rexa"]
 
-[sub_resource type="Gradient" id="Gradient_cgw1l"]
-colors = PackedColorArray(0.211765, 0, 0.431373, 1, 1, 1, 0.690196, 1)
+[sub_resource type="Gradient" id="Gradient_jkkqr"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.764706, 0.168627, 1)
+metadata/_snap_enabled = true
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0hu1v"]
-gradient = SubResource("Gradient_cgw1l")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j4jb6"]
+gradient = SubResource("Gradient_jkkqr")
+fill_from = Vector2(0.175214, 0.24359)
+fill_to = Vector2(0.91453, 0.790598)
 
 [node name="Menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,7 +45,7 @@ offset_bottom = -479.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.22042, 2.75623)
-texture = SubResource("GradientTexture1D_0hu1v")
+texture = SubResource("GradientTexture2D_j4jb6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -73,6 +77,7 @@ icon = ExtResource("5_0mlvc")
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_1caw2")
 autoplay = true
+bus = &"Music"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(584, 34)

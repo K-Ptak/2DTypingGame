@@ -1,0 +1,403 @@
+[gd_scene load_steps=18 format=3 uid="uid://bouigtkjllql2"]
+
+[ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
+[ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
+[ext_resource type="FontFile" uid="uid://cnboi1q3iyvyl" path="res://assets/fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="3_rlxfr"]
+[ext_resource type="Script" path="res://menus/GUI/Score.gd" id="4_0en27"]
+[ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="4_06uhq"]
+[ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
+[ext_resource type="Texture2D" uid="uid://bwgkoqbyto6tg" path="res://assets/GUI/skill_fireball.png" id="7_sswf1"]
+[ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
+[ext_resource type="Script" path="res://menus/GUI/SkillRecharge.gd" id="8_tqs47"]
+[ext_resource type="AudioStream" uid="uid://bdix6sychynii" path="res://assets/sounds/fireball_sound.wav" id="9_ek110"]
+[ext_resource type="Script" path="res://menus/GUI/GameOverScreen.gd" id="10_ecngn"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="10_pdlc4"]
+[ext_resource type="AudioStream" uid="uid://b7gw5yolqn3g5" path="res://assets/sounds/player_death.wav" id="13_586rv"]
+
+[sub_resource type="GDScript" id="GDScript_rj55e"]
+resource_local_to_scene = true
+script/source = "extends Control
+
+var heart_size: int = 64
+
+func player_damaged():
+	if $Hearts.size.x != heart_size:
+		%PlayerHurtSound.play()
+		$Hearts.size.x = $Hearts.size.x - heart_size
+	else:
+		get_parent().get_parent().get_parent().get_parent().delete_all_entities()
+		get_parent().get_child(1).visible = !get_parent().get_child(1).visible
+		%GameOverScreen.visible = !%GameOverScreen.visible
+		%CanvasLayer.visible = !%CanvasLayer.visible
+		
+		var minutes = %Minutes.text
+		var seconds = %Seconds.text
+		var miliseconds = %Miliseconds.text
+		
+		%UserTime.text = str(minutes+seconds+miliseconds)
+		%UserScore.text = %Score.text
+		
+		get_tree().paused = !get_tree().paused
+		%PlayerDeathSound.play()
+	
+func player_healed():
+	$Hearts.size.x = $Hearts.size.x + heart_size
+"
+
+[sub_resource type="Gradient" id="Gradient_v17ca"]
+offsets = PackedFloat32Array(0, 0.993151)
+colors = PackedColorArray(1, 0.4, 0.239216, 0.101961, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p0ecg"]
+gradient = SubResource("Gradient_v17ca")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_harvb"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0
+angle_max = 60.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+orbit_velocity_max = 180.0
+radial_velocity_max = 180.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 30.0
+linear_accel_max = 30.0
+scale_min = 10.0
+scale_max = 10.0
+color = Color(0.952941, 0.533333, 0.227451, 1)
+color_ramp = SubResource("GradientTexture1D_p0ecg")
+
+[node name="GUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="GameTime" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.029
+anchor_right = 0.5
+anchor_bottom = 0.029
+offset_left = -133.0
+offset_top = -18.792
+offset_right = 134.0
+offset_bottom = 18.208
+script = ExtResource("1_n4no6")
+
+[node name="Minutes" type="Label" parent="CanvasLayer/GameTime"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -18.5
+offset_right = -20.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c6dcg")
+text = "00:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seconds" type="Label" parent="CanvasLayer/GameTime"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -18.5
+offset_right = 26.5
+offset_bottom = 18.5
+theme_override_fonts/font = ExtResource("2_c6dcg")
+text = "00:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Miliseconds" type="Label" parent="CanvasLayer/GameTime"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.5
+offset_top = -18.5
+offset_right = 81.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c6dcg")
+text = "000"
+vertical_alignment = 1
+
+[node name="PlayerScore" type="Panel" parent="CanvasLayer"]
+offset_left = 3.0
+offset_top = 957.0
+offset_right = 291.0
+offset_bottom = 1041.0
+
+[node name="Score" type="Label" parent="CanvasLayer/PlayerScore"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.482
+anchor_right = 0.41
+anchor_bottom = 0.482
+offset_left = -91.08
+offset_top = -13.488
+offset_right = 90.92
+offset_bottom = 13.512
+theme_override_fonts/font = ExtResource("3_rlxfr")
+theme_override_font_sizes/font_size = 26
+text = "0000000"
+horizontal_alignment = 1
+script = ExtResource("4_0en27")
+
+[node name="Multiplier" type="Label" parent="CanvasLayer/PlayerScore"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.832
+anchor_top = 0.571
+anchor_right = 0.832
+anchor_bottom = 0.571
+offset_left = -24.616
+offset_top = -31.964
+offset_right = 24.384
+offset_bottom = 22.036
+theme_override_colors/font_color = Color(0.878431, 0.145098, 0.356863, 1)
+theme_override_fonts/font = ExtResource("4_06uhq")
+theme_override_font_sizes/font_size = 53
+text = "x1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLife" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 64.0
+script = SubResource("GDScript_rj55e")
+
+[node name="Hearts" type="TextureRect" parent="CanvasLayer/PlayerLife"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("6_7wtko")
+stretch_mode = 1
+
+[node name="Skill" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1797, 992)
+scale = Vector2(0.765969, 0.796433)
+texture = ExtResource("7_sswf1")
+script = ExtResource("8_tqs47")
+
+[node name="RechargePanel" type="Panel" parent="CanvasLayer/Skill"]
+visible = false
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 1013.0
+offset_bottom = 625.0
+scale = Vector2(0.258201, 0.1488)
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer/Skill/RechargePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1162.0
+offset_bottom = 673.0
+theme_override_fonts/font = ExtResource("4_06uhq")
+theme_override_font_sizes/font_size = 666
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="CanvasLayer/Skill/RechargePanel"]
+unique_name_in_owner = true
+wait_time = 60.0
+one_shot = true
+
+[node name="SkillAudio" type="AudioStreamPlayer" parent="CanvasLayer/Skill/RechargePanel"]
+stream = ExtResource("9_ek110")
+bus = &"Sfx"
+
+[node name="ExplosionEffect" type="GPUParticles2D" parent="CanvasLayer/Skill/RechargePanel"]
+position = Vector2(-3661.28, -3435.83)
+scale = Vector2(17.8929, 17.8929)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_harvb")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+
+[node name="PauseScreen" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.443
+anchor_right = 0.49
+anchor_bottom = 0.443
+offset_left = -114.48
+offset_top = -25.733
+offset_right = 153.52
+offset_bottom = 26.267
+theme_override_fonts/font = ExtResource("4_06uhq")
+theme_override_font_sizes/font_size = 51
+text = "--- Paused ---"
+
+[node name="GameOverScreen" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("10_ecngn")
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.162
+anchor_right = 0.497
+anchor_bottom = 0.162
+offset_left = -85.544
+offset_top = -29.976
+offset_right = 87.456
+offset_bottom = 30.024
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 41
+text = "You died"
+
+[node name="Panel" type="Panel" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.496
+anchor_top = 0.299
+anchor_right = 0.496
+anchor_bottom = 0.299
+offset_left = -168.392
+offset_top = -26.752
+offset_right = 168.608
+offset_bottom = 26.248
+
+[node name="Label2" type="Label" parent="GameOverScreen/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.5
+anchor_right = 0.285
+anchor_bottom = 0.5
+offset_left = -85.045
+offset_top = -25.5
+offset_right = 84.955
+offset_bottom = 24.5
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+
+[node name="Label3" type="Label" parent="GameOverScreen/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.5
+anchor_right = 0.285
+anchor_bottom = 0.5
+offset_left = -21.045
+offset_top = 33.5
+offset_right = 148.955
+offset_bottom = 83.5
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 32
+text = "Your Time:"
+
+[node name="UserTime" type="Label" parent="GameOverScreen/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.453
+anchor_top = 2.698
+anchor_right = 0.453
+anchor_bottom = 2.698
+offset_left = -65.661
+offset_top = -24.994
+offset_right = 65.339
+offset_bottom = 25.006
+theme_override_fonts/font = ExtResource("10_pdlc4")
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+
+[node name="UserScore" type="Label" parent="GameOverScreen/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.736
+anchor_top = 0.538
+anchor_right = 0.736
+anchor_bottom = 0.538
+offset_left = -86.032
+offset_top = -24.514
+offset_right = 85.968
+offset_bottom = 24.486
+theme_override_font_sizes/font_size = 35
+
+[node name="QuitButton" type="Button" parent="GameOverScreen/Panel"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 5.745
+anchor_right = 0.5
+anchor_bottom = 5.745
+offset_left = -301.5
+offset_top = -15.485
+offset_right = 304.5
+offset_bottom = 15.515
+text = "Quit"
+
+[node name="MainMenuButton" type="Button" parent="GameOverScreen/Panel"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 4.5
+anchor_right = 0.5
+anchor_bottom = 4.5
+offset_left = -301.5
+offset_top = -15.5
+offset_right = 304.5
+offset_bottom = 15.5
+text = "Main menu"
+
+[node name="PlayerHurtSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_fy6iv")
+bus = &"Sfx"
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_586rv")
+bus = &"Sfx"
+
+[connection signal="timeout" from="CanvasLayer/Skill/RechargePanel/CountdownTimer" to="CanvasLayer/Skill" method="_on_countdown_timer_timeout"]
+[connection signal="pressed" from="GameOverScreen/Panel/QuitButton" to="GameOverScreen" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/Panel/MainMenuButton" to="GameOverScreen" method="_on_main_menu_button_pressed"]

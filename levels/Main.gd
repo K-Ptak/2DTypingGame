@@ -2,6 +2,10 @@ extends Node2D
 
 @onready var enemy_container = $EnemyContainer
 
+func _ready():
+	if (get_tree().paused == true):
+		get_tree().paused = !get_tree().paused
+
 var active_enemy = null
 var current_letter_index: int = -1
 var enemyPool = [
@@ -21,6 +25,16 @@ func _on_enemy_spawn_timer_timeout():
 	
 	instance.global_position = %Marker2D.global_position
 	enemy_container.add_child(instance)
+	
+func screen_clear():
+	for enemy in enemy_container.get_children():
+		%Player/GUI/CanvasLayer/PlayerScore/Score.on_enemy_defeat(enemy.SCORE)
+		enemy.queue_free()
+		
+func delete_all_entities():
+	for enemy in enemy_container.get_children():
+		enemy.queue_free()
+	%Player/Sprite2D.visible = !%Player/Sprite2D.visible
 
 func find_new_active_enemy(typed_character: String):
 	for enemy in enemy_container.get_children():
