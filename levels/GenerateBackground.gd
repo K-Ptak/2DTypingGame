@@ -24,4 +24,3 @@ func generate_chunk(position):
 			var temp = temperature.get_noise_2d(tile_pos.x - width/2 + x, tile_pos.y - height/2 + y)*10
 			var alt = altitude.get_noise_2d(tile_pos.x - width/2 + x, tile_pos.y - height/2 + y)*10
 			set_cell(0, Vector2i(tile_pos.x - width/4 + x, tile_pos.y - height/4 + y), 0, Vector2(round((moist+10)/5), round((temp+10)/5)))
-			#set_cell(0, Vector2i(tile_pos.x - width/2 + x, tile_pos.y - height/2 + y), 0, Vector2i(1,1))

@@ -8,15 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bouigtkjllql2" path="res://menus/GUI/GUI.tscn" id="6_wndf1"]
 [ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1oda0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8uvbm"]
 texture = ExtResource("6_urqia")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
 1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 0
 2:0/0 = 0
 3:0/0 = 0
 0:1/0 = 0
@@ -37,7 +33,7 @@ tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Metal"
 terrain_set_0/terrain_0/color = Color(0.57527, 1, 0.901811, 1)
-sources/0 = SubResource("TileSetAtlasSource_1oda0")
+sources/0 = SubResource("TileSetAtlasSource_8uvbm")
 
 [sub_resource type="Curve2D" id="Curve2D_kxt54"]
 _data = {
