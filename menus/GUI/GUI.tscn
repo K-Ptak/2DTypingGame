@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=18 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://ckj67v4jqu7a2" path="res://menus/GUI/pause_screen.tscn" id="10_r0l0h"]
 [ext_resource type="PackedScene" uid="uid://cfa8awhbe8fm6" path="res://menus/GUI/game_over_screen.tscn" id="11_wv843"]
 [ext_resource type="AudioStream" uid="uid://b7gw5yolqn3g5" path="res://assets/sounds/player_death.wav" id="13_586rv"]
+[ext_resource type="AudioStream" uid="uid://dvmlhll1el8li" path="res://assets/sounds/hp_pickup.wav" id="13_qxe73"]
+[ext_resource type="AudioStream" uid="uid://bt0u8x0jt12lq" path="res://assets/sounds/mousetrap_sound.wav" id="14_gy6fu"]
+[ext_resource type="AudioStream" uid="uid://dorikkmldjvqg" path="res://assets/sounds/double_pickup.wav" id="15_ay5mc"]
+[ext_resource type="AudioStream" uid="uid://r56rc2jlitc8" path="res://assets/sounds/bomb_pickup.wav" id="16_rq6gb"]
 
 [sub_resource type="GDScript" id="GDScript_rj55e"]
 resource_local_to_scene = true
@@ -42,8 +46,12 @@ func player_damaged():
 			game_over_screen()
 	
 func player_healed():
-	$Hearts.size.x = $Hearts.size.x + heart_size
-
+	%HealthPickupSound.play()
+	if $Hearts.size.x < heart_size * 3:
+		$Hearts.size.x = $Hearts.size.x + heart_size
+		
+func player_slowed():
+	%MousetrapSound.play()
 
 func highscore_over_screen():
 	%HSGameOverScreen.visible = !%HSGameOverScreen.visible
@@ -226,3 +234,21 @@ bus = &"Sfx"
 unique_name_in_owner = true
 stream = ExtResource("13_586rv")
 bus = &"Sfx"
+
+[node name="HealthPickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_qxe73")
+bus = &"Sfx"
+
+[node name="MousetrapSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_gy6fu")
+bus = &"Sfx"
+
+[node name="DoublePickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_ay5mc")
+
+[node name="BombPickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("16_rq6gb")

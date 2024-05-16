@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://faul1yrne7d4"]
+
+[ext_resource type="Texture2D" uid="uid://cfijd6d5kpbtt" path="res://assets/pickups/battery.png" id="1_dvhl7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg5lg"]
+
+[node name="BatteryPickup" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dvhl7")
+
+[node name="BatteryPickupRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickupRange"]
+scale = Vector2(3.40722, 3.40722)
+shape = SubResource("CircleShape2D_cg5lg")

@@ -24,3 +24,8 @@ func on_enemy_defeat(new_score):
 
 func reset_multiplier():
 	multiplier = 1
+
+func double_multiplier():
+	multiplier *= 2
+	%Multiplier.text = "x%s" % multiplier
+	%DoublePickupSound.play()

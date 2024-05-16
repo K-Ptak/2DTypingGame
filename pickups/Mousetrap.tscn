@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gyb4g1yw3tsb"]
+
+[ext_resource type="Texture2D" uid="uid://c8e0s5643gi27" path="res://assets/pickups/mousetrap.png" id="1_qhne7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4tpd"]
+
+[node name="Mousetrap" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qhne7")
+
+[node name="MousetrapRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MousetrapRange"]
+scale = Vector2(3.3946, 3.3946)
+shape = SubResource("CircleShape2D_q4tpd")

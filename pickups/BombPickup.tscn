@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://blql7ooauexvo"]
+
+[ext_resource type="Texture2D" uid="uid://cc1rffclyho13" path="res://assets/pickups/bomb.png" id="1_30738"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jtmqh"]
+
+[node name="BombPickup" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_30738")
+
+[node name="BombPickupRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombPickupRange"]
+scale = Vector2(3.20805, 3.20805)
+shape = SubResource("CircleShape2D_jtmqh")

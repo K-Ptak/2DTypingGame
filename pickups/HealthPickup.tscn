@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://djf5252r7qsah"]
+
+[ext_resource type="Texture2D" uid="uid://0un5l0gq0isj" path="res://assets/pickups/healthpack.png" id="1_uhalr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crkmt"]
+
+[node name="HealthPickup" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uhalr")
+
+[node name="HealthPickupRange" type="Area2D" parent="."]
+
+[node name="PickupRangeBox" type="CollisionShape2D" parent="HealthPickupRange"]
+position = Vector2(1.90735e-06, 8)
+scale = Vector2(2.84, 2.84)
+shape = SubResource("CircleShape2D_crkmt")

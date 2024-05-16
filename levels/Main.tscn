@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://gphmjnvlolkh"]
+[gd_scene load_steps=12 format=3 uid="uid://gphmjnvlolkh"]
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_4pd0v"]
 [ext_resource type="Script" path="res://levels/GenerateBackground.gd" id="3_rnkpi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byj0kwa0b4cmf" path="res://assets/background/Tileset.png" id="6_urqia"]
 [ext_resource type="PackedScene" uid="uid://bouigtkjllql2" path="res://menus/GUI/GUI.tscn" id="6_wndf1"]
 [ext_resource type="PackedScene" uid="uid://bosr0wvbp1amm" path="res://player/Player.tscn" id="6_xxe0n"]
+[ext_resource type="PackedScene" uid="uid://blql7ooauexvo" path="res://pickups/BombPickup.tscn" id="8_iv0qi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8uvbm"]
 texture = ExtResource("6_urqia")
@@ -72,6 +73,7 @@ offset_left = -971.0
 offset_top = -537.0
 offset_right = 967.0
 offset_bottom = 544.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3btes")
@@ -87,6 +89,8 @@ autostart = true
 [node name="EnemyDeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_stcd4")
 bus = &"Sfx"
+
+[node name="BombPickup" parent="." instance=ExtResource("8_iv0qi")]
 
 [connection signal="finished" from="Soundtrack" to="." method="_on_soundtrack_finished"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
