@@ -50,27 +50,21 @@ func player_slowdown(time, slow_speed):
 func _on_hurt_box_area_entered(area):
 	match area.name:
 		\"HitBox\":
-			area.get_parent().queue_free()
 			%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
-			%Player/GUI/CanvasLayer/PlayerScore/Multiplier.text = \"x1\"
 			%Player/GUI/CanvasLayer/PlayerScore/Score.reset_multiplier()
 		\"HealthPickupRange\":
-			area.get_parent().queue_free()
 			%Player/GUI/CanvasLayer/PlayerLife.player_healed()
 		\"MousetrapRange\":
-			area.get_parent().queue_free()
 			player_slowdown(3, 200)
 			%Player/GUI/CanvasLayer/PlayerLife.player_slowed()
 		\"DoublePickupRange\":
-			area.get_parent().queue_free()
 			%Player/GUI/CanvasLayer/PlayerScore/Score.double_multiplier()
 		\"BatteryPickupRange\":
-			area.get_parent().queue_free()
 			%Player/GUI/CanvasLayer/Skill.fast_recharge(2)
 		\"BombPickupRange\":
-			area.get_parent().queue_free()
 			%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
 			%Player/GUI/BombPickupSound.play()
+	area.get_parent().queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3518"]

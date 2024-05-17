@@ -24,6 +24,7 @@ func on_enemy_defeat(new_score):
 
 func reset_multiplier():
 	multiplier = 1
+	%Multiplier.text = "x%s" % multiplier
 
 func double_multiplier():
 	multiplier *= 2
