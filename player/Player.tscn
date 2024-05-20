@@ -50,7 +50,7 @@ func player_slowdown(time, slow_speed):
 func _on_hurt_box_area_entered(area):
 	match area.name:
 		\"HitBox\":
-			%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
+			#%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
 			%Player/GUI/CanvasLayer/PlayerScore/Score.reset_multiplier()
 		\"HealthPickupRange\":
 			%Player/GUI/CanvasLayer/PlayerLife.player_healed()

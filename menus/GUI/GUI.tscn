@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=19 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bt0u8x0jt12lq" path="res://assets/sounds/mousetrap_sound.wav" id="14_gy6fu"]
 [ext_resource type="AudioStream" uid="uid://dorikkmldjvqg" path="res://assets/sounds/double_pickup.wav" id="15_ay5mc"]
 [ext_resource type="AudioStream" uid="uid://r56rc2jlitc8" path="res://assets/sounds/bomb_pickup.wav" id="16_rq6gb"]
+[ext_resource type="AudioStream" uid="uid://csis87lbh1lbc" path="res://assets/sounds/winfanfare.wav" id="17_s081a"]
 
 [sub_resource type="GDScript" id="GDScript_rj55e"]
 resource_local_to_scene = true
@@ -172,6 +173,7 @@ offset_right = -23.0
 offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_c6dcg")
 text = "00:"
 horizontal_alignment = 2
@@ -189,6 +191,7 @@ offset_left = -24.0
 offset_top = -18.0
 offset_right = 24.0
 offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_c6dcg")
 text = "00:"
 horizontal_alignment = 2
@@ -208,6 +211,7 @@ offset_right = 77.0
 offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_c6dcg")
 text = "000"
 vertical_alignment = 1
@@ -225,7 +229,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PlayerHurtSound" type="AudioStreamPlayer2D" parent="."]
+[node name="PlayerHurtSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_fy6iv")
 bus = &"Sfx"
@@ -248,7 +252,14 @@ bus = &"Sfx"
 [node name="DoublePickupSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("15_ay5mc")
+bus = &"Sfx"
 
 [node name="BombPickupSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("16_rq6gb")
+bus = &"Sfx"
+
+[node name="WinFanfareSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_s081a")
+bus = &"Sfx"
