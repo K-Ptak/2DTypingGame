@@ -30,6 +30,7 @@ func _process(delta) -> void:
 		$Miliseconds.set("theme_override_colors/font_color",green)
 		if win == false:
 			%WinFanfareSound.play()
+			get_parent().get_parent().get_parent().get_parent().get_child(4).stop()
 			win = true
 
 func stop() -> void:
