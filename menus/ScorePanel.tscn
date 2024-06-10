@@ -52,3 +52,6 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_ac81c")
 theme_override_font_sizes/font_size = 34
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(524, 4)

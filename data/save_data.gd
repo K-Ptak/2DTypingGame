@@ -5,6 +5,7 @@ class_name SaveData
 @export var names = []
 @export var characters = []
 @export var time = []
+@export var win = []
 
 const SAVE_PATH : String = "user://leaderboards.tres"
 
