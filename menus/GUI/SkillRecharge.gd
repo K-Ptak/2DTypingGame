@@ -2,6 +2,12 @@ extends Sprite2D
 
 var recharge = 60
 
+func _ready():
+	if(GlobalVars.hasSpell):
+		visible = true
+	else:
+		visible = false
+
 func _process(_delta):
 	%CountdownLabel.text = str(round(%CountdownTimer.time_left))
 

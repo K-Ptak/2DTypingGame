@@ -19,11 +19,23 @@ func draw_highscores_to_ui():
 	for score in DataManagement.save_data.highscores:
 			var score_panel = score_panel_scene.instantiate()
 			score_panel.get_child(0).text = DataManagement.save_data.names[index]
-			score_panel.get_child(1).text = score
+			score_panel.get_child(1).text = DataManagement.save_data.time[index]
+			score_panel.get_child(2).texture = draw_character_img(index)
+			score_panel.get_child(3).text = score
+			
 			%ScoreContainer.add_child(score_panel)
 			index += 1
 	draw_margin_panels()
 
+func draw_character_img(index):
+	match DataManagement.save_data.characters[index]:
+		1:
+			return load("res://assets/GUI/wizard_icon.png")
+		2:
+			return load("res://assets/GUI/ranger_icon.png")
+		3:
+			return load("res://assets/GUI/warrior_icon.png")
+			
 func draw_margin_panels():
 	var score_panel = score_panel_scene.instantiate()
 	score_panel.get_child(0).text = " "

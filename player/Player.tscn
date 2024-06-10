@@ -12,6 +12,18 @@ signal hp_changed(player_hearts)
 @export var max_hp: int = 3
 @export var hp: int = max_hp
 
+func _ready():
+	match GlobalVars.characterSelected:
+		1:
+			%Player/Sprite2D.texture = load(\"res://assets/player/wizard-class.png\")
+		2:
+			%Player/Sprite2D.texture = load(\"res://assets/player/ranger-class.png\")
+			speed = 600
+		3:
+			%Player/Sprite2D.texture = load(\"res://assets/player/warrior-class.png\")
+			max_hp = 5
+			hp = max_hp
+
 func get_input():
 	if(%Player/GUI/PauseScreen.visible == false):
 		var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
@@ -23,7 +35,7 @@ func get_input():
 		if Input.is_action_pressed(\"right\"):
 			$Sprite2D.flip_h = false
 			
-		if Input.is_action_just_pressed(\"skill\"):
+		if Input.is_action_just_pressed(\"skill\") and GlobalVars.hasSpell:
 			if(%Player/GUI/CanvasLayer/Skill/RechargePanel/CountdownTimer.time_left == 0 && %Player/Sprite2D.visible):
 				%Player/GUI/CanvasLayer/Skill.SkillRecharge()
 				get_parent().screen_clear()
@@ -50,7 +62,7 @@ func player_slowdown(time, slow_speed):
 func _on_hurt_box_area_entered(area):
 	match area.name:
 		\"HitBox\":
-			#%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
+			%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
 			%Player/GUI/CanvasLayer/PlayerScore/Score.reset_multiplier()
 		\"HealthPickupRange\":
 			%Player/GUI/CanvasLayer/PlayerLife.player_healed()

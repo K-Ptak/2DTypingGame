@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dl6bsofnkbwo"]
+[gd_scene load_steps=25 format=3 uid="uid://dl6bsofnkbwo"]
 
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
 [ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
@@ -16,6 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://m8emnsulv5sa" path="res://assets/sounds/enemy_death.wav" id="10_kvymv"]
 [ext_resource type="Script" path="res://menus/LeaderboardBox.gd" id="13_bm7xb"]
 [ext_resource type="PackedScene" uid="uid://ds01bfj6doktf" path="res://menus/ScorePanel.tscn" id="14_iur8v"]
+[ext_resource type="Script" path="res://menus/CharacterSelectBox.gd" id="17_qm41j"]
+[ext_resource type="Texture2D" uid="uid://cnylq2snhsqi2" path="res://assets/player/wizard-class.png" id="18_sl4ua"]
+[ext_resource type="Texture2D" uid="uid://dheqh363kuq14" path="res://assets/player/ranger-class.png" id="19_o1cw3"]
+[ext_resource type="Texture2D" uid="uid://876nwwuyanwo" path="res://assets/player/warrior-class.png" id="20_xuojy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1oda0"]
 texture = ExtResource("2_5gejv")
@@ -339,6 +343,129 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 100
 
+[node name="CharacterSelectBox" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_qm41j")
+
+[node name="ExitCharacterSelectButton" type="TextureButton" parent="CharacterSelectBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116
+anchor_top = 0.177
+anchor_right = 0.116
+anchor_bottom = 0.177
+offset_left = -100.632
+offset_top = -69.952
+offset_right = -36.632
+offset_bottom = -5.952
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_d0jjb")
+
+[node name="CharacterWizard" type="Button" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 123.0
+offset_right = 186.0
+offset_bottom = 241.0
+scale = Vector2(2.36, 2.36)
+theme_override_font_sizes/font_size = 20
+icon = ExtResource("18_sl4ua")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="WizardName" type="Label" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 135.0
+offset_right = 243.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 25
+text = "Wizard
+"
+
+[node name="WizardDescription" type="Label" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 408.0
+offset_right = 276.0
+offset_bottom = 443.0
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 25
+text = "Fireball spell"
+
+[node name="CharacterRanger" type="Button" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 122.0
+offset_right = 565.0
+offset_bottom = 240.0
+scale = Vector2(2.36, 2.36)
+theme_override_font_sizes/font_size = 20
+icon = ExtResource("19_o1cw3")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="RangerName" type="Label" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 135.0
+offset_right = 623.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 25
+text = "Ranger"
+
+[node name="RangerDescription" type="Label" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 408.0
+offset_right = 688.0
+offset_bottom = 443.0
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 25
+text = "Faster movement"
+
+[node name="CharacterWarrior" type="Button" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 123.0
+offset_right = 968.0
+offset_bottom = 241.0
+scale = Vector2(2.36, 2.36)
+theme_override_font_sizes/font_size = 20
+icon = ExtResource("20_xuojy")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="WarriorDescription" type="Label" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 907.0
+offset_top = 406.0
+offset_right = 1055.0
+offset_bottom = 441.0
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 25
+text = "More health"
+
+[node name="WarriorName" type="Label" parent="CharacterSelectBox"]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 135.0
+offset_right = 1034.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("7_n2pr8")
+theme_override_font_sizes/font_size = 25
+text = "Warrior"
+
 [connection signal="pressed" from="ButtonBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ButtonBox/Leaderboards" to="." method="_on_leaderboards_pressed"]
 [connection signal="pressed" from="ButtonBox/OptionsButton" to="." method="_on_options_button_pressed"]
@@ -347,3 +474,7 @@ theme_override_constants/separation = 100
 [connection signal="pressed" from="SettingsBox/TestSoundButton" to="SettingsBox" method="_on_test_sound_button_pressed"]
 [connection signal="pressed" from="SettingsBox/ExitSettingsButton" to="SettingsBox" method="_on_exit_settings_button_pressed"]
 [connection signal="pressed" from="LeaderboardBox/ExitLeaderboardButton" to="LeaderboardBox" method="_on_exit_leaderboard_button_pressed"]
+[connection signal="pressed" from="CharacterSelectBox/ExitCharacterSelectButton" to="CharacterSelectBox" method="_on_exit_character_select_button_pressed"]
+[connection signal="pressed" from="CharacterSelectBox/CharacterWizard" to="CharacterSelectBox" method="_on_character_wizard_pressed"]
+[connection signal="pressed" from="CharacterSelectBox/CharacterRanger" to="CharacterSelectBox" method="_on_character_ranger_pressed"]
+[connection signal="pressed" from="CharacterSelectBox/CharacterWarrior" to="CharacterSelectBox" method="_on_character_warrior_pressed"]

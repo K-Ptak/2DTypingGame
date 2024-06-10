@@ -3,6 +3,9 @@ class_name SaveData
 
 @export var highscores = []
 @export var names = []
+@export var characters = []
+@export var time = []
+
 const SAVE_PATH : String = "user://leaderboards.tres"
 
 func save():

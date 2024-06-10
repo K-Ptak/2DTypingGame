@@ -24,8 +24,16 @@ script/source = "extends Control
 
 var heart_size: int = 64
 var temp_highscore:int = 0
+var more_health:bool
 
 func _ready():
+	if(GlobalVars.characterSelected == 1 or GlobalVars.characterSelected == 2):
+		$Hearts.size.x = heart_size * 3
+		more_health = false
+	else:
+		$Hearts.size.x = heart_size * 5
+		more_health = true
+	
 	var hs_to_beat = 0000000
 	for hs in DataManagement.save_data.highscores:
 		if hs_to_beat < int(hs):
@@ -48,7 +56,9 @@ func player_damaged():
 	
 func player_healed():
 	%HealthPickupSound.play()
-	if $Hearts.size.x < heart_size * 3:
+	if !more_health and $Hearts.size.x < heart_size * 3:
+		$Hearts.size.x = $Hearts.size.x + heart_size
+	elif more_health and $Hearts.size.x < heart_size * 5:
 		$Hearts.size.x = $Hearts.size.x + heart_size
 		
 func player_slowed():
@@ -59,8 +69,9 @@ func highscore_over_screen():
 	var minutes = %Minutes.text
 	var seconds = %Seconds.text
 	var miliseconds = %Miliseconds.text
+	GlobalVars.tempTime = str(minutes+seconds+miliseconds)
 	
-	%HSGameOverScreen/UserTime.text = str(minutes+seconds+miliseconds)
+	%HSGameOverScreen/UserTime.text = GlobalVars.tempTime
 	%HSGameOverScreen/UserScore.text = %Score.text
 	
 	get_tree().paused = !get_tree().paused
@@ -141,7 +152,7 @@ script = SubResource("GDScript_rj55e")
 
 [node name="Hearts" type="TextureRect" parent="CanvasLayer/PlayerLife"]
 layout_mode = 0
-offset_right = 192.0
+offset_right = 320.0
 offset_bottom = 64.0
 texture = ExtResource("6_7wtko")
 stretch_mode = 1
@@ -227,6 +238,7 @@ layout_mode = 2
 
 [node name="HSGameOverScreen" parent="." instance=ExtResource("10_f08cn")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="PlayerHurtSound" type="AudioStreamPlayer" parent="."]
