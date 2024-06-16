@@ -2,16 +2,19 @@ extends Enemy
 
 class_name EnemyBoss
 
-const SPEED = 100
+const SPEED = 400
 @export var SCORE = 2500
 var projectile = preload("res://enemies/EnemyProjectile.tscn")
+
+func _ready() -> void:
+	prompt_text = GlobalVars.bossCombination[0]
+	prompt_text = prompt_text.to_upper()
+	prompt.parse_bbcode(set_center_tags(prompt_text))
 
 func _physics_process(_delta):
 	move_and_collide(global_position.direction_to(get_node("/root/Main/Player").position) * SPEED * _delta)
 	rotation = velocity.angle()
 	handleCollision()
-
-
 
 func _on_timer_timeout():
 	var rng = RandomNumberGenerator.new()
@@ -22,3 +25,4 @@ func _on_timer_timeout():
 	
 	instance.global_position = %ProjectileSpawn.global_position
 	get_parent().add_child(instance)
+

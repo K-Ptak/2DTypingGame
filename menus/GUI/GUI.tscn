@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=21 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
 [ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmkgafiqcmsm4" path="res://menus/GUI/skill.tscn" id="6_2wh81"]
 [ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
 [ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
+[ext_resource type="PackedScene" uid="uid://b5cowvafukc3v" path="res://menus/GUI/win_screen.tscn" id="9_hew0w"]
 [ext_resource type="PackedScene" uid="uid://tuh0636ori41" path="res://menus/GUI/hs_game_over_screen.tscn" id="10_f08cn"]
 [ext_resource type="PackedScene" uid="uid://ckj67v4jqu7a2" path="res://menus/GUI/pause_screen.tscn" id="10_r0l0h"]
 [ext_resource type="PackedScene" uid="uid://cfa8awhbe8fm6" path="res://menus/GUI/game_over_screen.tscn" id="11_wv843"]
@@ -17,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dorikkmldjvqg" path="res://assets/sounds/double_pickup.wav" id="15_ay5mc"]
 [ext_resource type="AudioStream" uid="uid://r56rc2jlitc8" path="res://assets/sounds/bomb_pickup.wav" id="16_rq6gb"]
 [ext_resource type="AudioStream" uid="uid://csis87lbh1lbc" path="res://assets/sounds/winfanfare.wav" id="17_s081a"]
+[ext_resource type="AudioStream" uid="uid://daucs6xornuhy" path="res://assets/sounds/PlayerWinSound.wav" id="19_ymxub"]
 
 [sub_resource type="GDScript" id="GDScript_rj55e"]
 resource_local_to_scene = true
@@ -49,11 +51,17 @@ func player_damaged():
 		get_parent().get_parent().get_parent().get_parent().delete_all_entities()
 		get_parent().get_child(1).visible = !get_parent().get_child(1).visible
 		%CanvasLayer.visible = !%CanvasLayer.visible
-		if(int(%Score.text) > temp_highscore):
+		if(int(%Score.text) >= temp_highscore):
 			highscore_over_screen()
 		else:
 			game_over_screen()
-	
+			
+func player_win():
+	get_parent().get_parent().get_parent().get_parent().delete_all_entities()
+	get_parent().get_child(1).visible = !get_parent().get_child(1).visible
+	%CanvasLayer.visible = !%CanvasLayer.visible
+	win_screen()
+
 func player_healed():
 	%HealthPickupSound.play()
 	if !more_health and $Hearts.size.x < heart_size * 3:
@@ -88,6 +96,25 @@ func game_over_screen():
 	
 	get_tree().paused = !get_tree().paused
 	%PlayerDeathSound.play()
+
+func win_screen():
+	%WinScreen.visible = !%WinScreen.visible
+	var minutes = %Minutes.text
+	var seconds = %Seconds.text
+	var miliseconds = %Miliseconds.text
+	GlobalVars.win = true
+	
+	if(int(%Score.text) >= temp_highscore):
+		GlobalVars.tempTime = str(minutes+seconds+miliseconds)
+		%WinScreen/Panel/HSLabel.visible = !%WinScreen/Panel/HSLabel.visible
+		%WinScreen/Panel/PlayerName.visible = !%WinScreen/Panel/PlayerName.visible
+		%WinScreen/Panel/HSSaveButton.visible = !%WinScreen/Panel/HSSaveButton.visible
+		
+	%WinScreen/Panel/UserTime.text = str(minutes+seconds+miliseconds)
+	%WinScreen/Panel/UserScore.text = %Score.text
+	
+	get_tree().paused = !get_tree().paused
+	%PlayerWinSound.play()
 "
 
 [node name="GUI" type="MarginContainer"]
@@ -231,6 +258,11 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="WinScreen" parent="." instance=ExtResource("9_hew0w")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="GameOverScreen" parent="." instance=ExtResource("11_wv843")]
 unique_name_in_owner = true
 visible = false
@@ -274,4 +306,9 @@ bus = &"Sfx"
 [node name="WinFanfareSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("17_s081a")
+bus = &"Sfx"
+
+[node name="PlayerWinSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("19_ymxub")
 bus = &"Sfx"

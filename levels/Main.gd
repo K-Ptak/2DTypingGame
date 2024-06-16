@@ -5,7 +5,12 @@ extends Node2D
 func _ready():
 	if (get_tree().paused == true):
 		get_tree().paused = !get_tree().paused	
-
+	
+	GlobalVars.bossCombination = []
+	for x in 1:
+		GlobalVars.bossCombination.insert(0,PromptList.get_prompt())
+	GlobalVars.win = false
+	
 var active_enemy = null
 var current_letter_index: int = -1
 var enemyPool = [
@@ -28,6 +33,9 @@ func _on_enemy_spawn_timer_timeout():
 func screen_clear():
 	for enemy in enemy_container.get_children():
 		%Player/GUI/CanvasLayer/PlayerScore/Score.on_enemy_defeat(enemy.SCORE)
+		if enemy.SCORE == 2500:
+			enemy.queue_free()
+			%Player/GUI/CanvasLayer/PlayerLife.player_win()
 		enemy.queue_free()
 		
 func delete_all_entities():
@@ -68,9 +76,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				current_letter_index += 1
 				active_enemy.set_next_character(current_letter_index)
 				if current_letter_index == prompt.length():
-					print("Done")
+					#print("Done")
 					current_letter_index = -1
 					%Player/GUI/CanvasLayer/PlayerScore/Score.on_enemy_defeat(active_enemy.SCORE)
+					if active_enemy.SCORE == 2500:
+						active_enemy.queue_free()
+						%Player/GUI/CanvasLayer/PlayerLife.player_win()
 					active_enemy.queue_free()
 					$EnemyDeathSound.play()
 					active_enemy = null

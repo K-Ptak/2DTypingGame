@@ -50,7 +50,7 @@ _data = {
 point_count = 16
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyrov"]
-size = Vector2(440, 207)
+size = Vector2(453, 222)
 
 [node name="EnemyBoss" type="CharacterBody2D"]
 script = ExtResource("1_c3y6t")
@@ -99,14 +99,14 @@ rotation = -0.00215934
 [node name="ProjectileSpawn" type="Marker2D" parent="Path2D/ProjectilePath"]
 unique_name_in_owner = true
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="BossHitBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitBox"]
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_vyrov")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

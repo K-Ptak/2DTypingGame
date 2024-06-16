@@ -6,6 +6,9 @@ extends Label
 
 func on_enemy_defeat(new_score):
 	score += new_score * multiplier
+	if score >= 9999999:
+		score = 9999999
+		
 	multiplier += 1
 	var zeroes = ""
 	

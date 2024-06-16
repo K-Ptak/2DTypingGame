@@ -7,6 +7,7 @@ var seconds: int = 0
 var miliseconds: int = 0
 var win_condition: int = 1
 var win: bool = false
+var boss = preload("res://enemies/EnemyBoss.tscn")
 @export var green = Color("#27fa14")
 
 func _process(delta) -> void:
@@ -29,12 +30,26 @@ func _process(delta) -> void:
 		$Seconds.set("theme_override_colors/font_color",green)
 		$Miliseconds.set("theme_override_colors/font_color",green)
 		if win == false:
-			%WinFanfareSound.play()
-			get_parent().get_parent().get_parent().get_parent().get_child(4).stop()
-			win = true
+			boss_fight()
 
 func stop() -> void:
 	set_process(false)
+	
+func boss_fight() -> void:
+	%WinFanfareSound.play()
+	var main_scene = get_parent().get_parent().get_parent().get_parent()
+	main_scene.get_child(4).stop()
+	
+	for enemy in main_scene.enemy_container.get_children():
+		enemy.queue_free()
+	
+	win = true
+	main_scene.get_child(1).global_position = main_scene.get_child(9).global_position
+	
+	
+	var instance = boss.instantiate()
+	instance.global_position = main_scene.get_child(8).global_position
+	main_scene.enemy_container.add_child(instance)
 
 func format_time() -> String:
 	return "%02d:%02d.%03d" % [minutes, seconds, miliseconds]

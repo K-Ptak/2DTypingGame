@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cret5pa2vm21y"]
+[gd_scene load_steps=7 format=3 uid="uid://cret5pa2vm21y"]
 
 [ext_resource type="Script" path="res://enemies/EnemyProjectile.gd" id="1_smffo"]
 [ext_resource type="Texture2D" uid="uid://d4ampd4nfnun0" path="res://assets/enemies/fire-projectile.png" id="1_sqf26"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="3_flm64"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b5863"]
 animations = [{
@@ -31,6 +32,27 @@ animation = &"new_animation"
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ruuqn")
 disabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -75.0
+offset_right = 73.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("3_flm64")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="HitBox" type="Area2D" parent="."]
 

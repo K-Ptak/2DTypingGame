@@ -64,6 +64,10 @@ func _on_hurt_box_area_entered(area):
 		\"HitBox\":
 			%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
 			%Player/GUI/CanvasLayer/PlayerScore/Score.reset_multiplier()
+		\"BossHitBox\":
+			for x in 5:
+				%Player/GUI/CanvasLayer/PlayerLife.player_damaged()
+				%Player/GUI/CanvasLayer/PlayerScore/Score.reset_multiplier()
 		\"HealthPickupRange\":
 			%Player/GUI/CanvasLayer/PlayerLife.player_healed()
 		\"MousetrapRange\":

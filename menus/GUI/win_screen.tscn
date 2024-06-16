@@ -1,0 +1,187 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5cowvafukc3v"]
+
+[ext_resource type="Script" path="res://menus/GUI/WinScreen.gd" id="1_5h00y"]
+[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="2_eovyd"]
+[ext_resource type="Texture2D" uid="uid://dexbep0ppktgf" path="res://assets/GUI/crown_icon.png" id="3_xvc22"]
+[ext_resource type="AudioStream" uid="uid://cukdeiwynlgm5" path="res://assets/sounds/highscore_saved.wav" id="4_7u7wc"]
+
+[node name="WinScreen" type="Panel"]
+script = ExtResource("1_5h00y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.162
+anchor_right = 0.497
+anchor_bottom = 0.162
+offset_left = -85.544
+offset_top = -29.976
+offset_right = 87.456
+offset_bottom = 30.024
+theme_override_fonts/font = ExtResource("2_eovyd")
+theme_override_font_sizes/font_size = 41
+text = "You win!"
+
+[node name="Crown" type="Sprite2D" parent="Label"]
+position = Vector2(-149.456, 30.976)
+texture = ExtResource("3_xvc22")
+
+[node name="Crown2" type="Sprite2D" parent="Label"]
+position = Vector2(329.544, 31.976)
+texture = ExtResource("3_xvc22")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.496
+anchor_top = 0.299
+anchor_right = 0.496
+anchor_bottom = 0.299
+offset_left = -168.392
+offset_top = -26.752
+offset_right = 168.608
+offset_bottom = 26.248
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.5
+anchor_right = 0.285
+anchor_bottom = 0.5
+offset_left = -85.045
+offset_top = -25.5
+offset_right = 84.955
+offset_bottom = 24.5
+theme_override_fonts/font = ExtResource("2_eovyd")
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.5
+anchor_right = 0.285
+anchor_bottom = 0.5
+offset_left = -8.04497
+offset_top = 33.5
+offset_right = 161.955
+offset_bottom = 83.5
+theme_override_fonts/font = ExtResource("2_eovyd")
+theme_override_font_sizes/font_size = 32
+text = "Your Time:"
+
+[node name="UserTime" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.453
+anchor_top = 2.698
+anchor_right = 0.453
+anchor_bottom = 2.698
+offset_left = -49.661
+offset_top = -36.994
+offset_right = 81.339
+offset_bottom = 13.006
+theme_override_fonts/font = ExtResource("2_eovyd")
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+
+[node name="UserScore" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.736
+anchor_top = 0.538
+anchor_right = 0.736
+anchor_bottom = 0.538
+offset_left = -86.032
+offset_top = -24.514
+offset_right = 85.968
+offset_bottom = 24.486
+theme_override_font_sizes/font_size = 35
+
+[node name="QuitButton" type="Button" parent="Panel"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 5.745
+anchor_right = 0.5
+anchor_bottom = 5.745
+offset_left = -301.5
+offset_top = 41.515
+offset_right = 304.5
+offset_bottom = 72.515
+text = "Quit"
+
+[node name="MainMenuButton" type="Button" parent="Panel"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 4.5
+anchor_right = 0.5
+anchor_bottom = 4.5
+offset_left = -301.5
+offset_top = 54.5
+offset_right = 304.5
+offset_bottom = 85.5
+text = "Main menu"
+
+[node name="HSLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 374.0
+offset_top = 8.0
+offset_right = 555.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_eovyd")
+theme_override_font_sizes/font_size = 24
+text = "New Highscore!"
+
+[node name="PlayerName" type="LineEdit" parent="Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 132.5
+offset_right = 52.0
+offset_bottom = 163.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6, 1.6)
+theme_override_fonts/font = ExtResource("2_eovyd")
+theme_override_font_sizes/font_size = 15
+placeholder_text = "-- enter your name --"
+alignment = 1
+max_length = 15
+
+[node name="HSSaveButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.653
+anchor_top = 0.6
+anchor_right = 0.653
+anchor_bottom = 0.6
+offset_left = 167.939
+offset_top = 131.2
+offset_right = 223.939
+offset_bottom = 169.2
+text = "Save"
+
+[node name="HSSaveSound" type="AudioStreamPlayer" parent="Panel"]
+unique_name_in_owner = true
+stream = ExtResource("4_7u7wc")
+bus = &"Sfx"
+
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Panel/HSSaveButton" to="." method="_on_hs_save_button_pressed"]
