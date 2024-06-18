@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://nri63etewb53"]
+[gd_scene load_steps=2 format=3 uid="uid://nri63etewb53"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_m7vsh"]
-[ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_frv2r"]
 
 [node name="GameTime" type="Panel"]
 anchors_preset = -1
@@ -29,7 +28,6 @@ offset_right = -20.0
 offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_frv2r")
 text = "00:"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -46,7 +44,6 @@ offset_left = -21.5
 offset_top = -18.5
 offset_right = 26.5
 offset_bottom = 18.5
-theme_override_fonts/font = ExtResource("2_frv2r")
 text = "00:"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -65,6 +62,5 @@ offset_right = 81.5
 offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_frv2r")
 text = "000"
 vertical_alignment = 1

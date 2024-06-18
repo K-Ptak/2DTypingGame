@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfa8awhbe8fm6"]
+[gd_scene load_steps=2 format=3 uid="uid://cfa8awhbe8fm6"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameOverScreen.gd" id="1_dmd5c"]
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="2_vwja4"]
 
 [node name="GameOverScreen" type="Panel"]
 script = ExtResource("1_dmd5c")
@@ -17,7 +16,6 @@ offset_left = -85.544
 offset_top = -29.976
 offset_right = 87.456
 offset_bottom = 30.024
-theme_override_fonts/font = ExtResource("2_vwja4")
 theme_override_font_sizes/font_size = 41
 text = "You died"
 
@@ -44,7 +42,6 @@ offset_left = -85.045
 offset_top = -25.5
 offset_right = 84.955
 offset_bottom = 24.5
-theme_override_fonts/font = ExtResource("2_vwja4")
 theme_override_font_sizes/font_size = 32
 text = "Score:"
 
@@ -59,7 +56,6 @@ offset_left = -21.045
 offset_top = 33.5
 offset_right = 148.955
 offset_bottom = 83.5
-theme_override_fonts/font = ExtResource("2_vwja4")
 theme_override_font_sizes/font_size = 32
 text = "Your Time:"
 
@@ -75,7 +71,6 @@ offset_left = -65.661
 offset_top = -24.994
 offset_right = 65.339
 offset_bottom = 25.006
-theme_override_fonts/font = ExtResource("2_vwja4")
 theme_override_font_sizes/font_size = 32
 text = "00:00:00"
 

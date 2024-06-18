@@ -1,10 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bouigtkjllql2"]
+[gd_scene load_steps=18 format=3 uid="uid://bouigtkjllql2"]
 
 [ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
-[ext_resource type="FontFile" uid="uid://dn1v5adx76y26" path="res://assets/fonts/Sixtyfour/static/Sixtyfour-Regular.ttf" id="2_c6dcg"]
-[ext_resource type="FontFile" uid="uid://cnboi1q3iyvyl" path="res://assets/fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="3_rlxfr"]
 [ext_resource type="Script" path="res://menus/GUI/Score.gd" id="4_0en27"]
-[ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="4_06uhq"]
 [ext_resource type="PackedScene" uid="uid://cmkgafiqcmsm4" path="res://menus/GUI/skill.tscn" id="6_2wh81"]
 [ext_resource type="Texture2D" uid="uid://dn353kqb1ln03" path="res://assets/GUI/heart-single-full.png" id="6_7wtko"]
 [ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
@@ -137,16 +134,15 @@ offset_bottom = 1041.0
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.41
-anchor_top = 0.482
-anchor_right = 0.41
-anchor_bottom = 0.482
-offset_left = -91.08
-offset_top = -13.488
-offset_right = 90.92
-offset_bottom = 13.512
-theme_override_fonts/font = ExtResource("3_rlxfr")
-theme_override_font_sizes/font_size = 26
+anchor_left = 0.394
+anchor_top = 0.494
+anchor_right = 0.394
+anchor_bottom = 0.494
+offset_left = -94.472
+offset_top = -23.496
+offset_right = 94.528
+offset_bottom = 23.504
+theme_override_font_sizes/font_size = 36
 text = "0000000"
 horizontal_alignment = 1
 script = ExtResource("4_0en27")
@@ -164,7 +160,6 @@ offset_top = -31.964
 offset_right = 24.384
 offset_bottom = 22.036
 theme_override_colors/font_color = Color(0.878431, 0.145098, 0.356863, 1)
-theme_override_fonts/font = ExtResource("4_06uhq")
 theme_override_font_sizes/font_size = 53
 text = "x1"
 horizontal_alignment = 1
@@ -191,8 +186,8 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -112.5
-offset_right = 112.5
+offset_left = -113.0
+offset_right = 112.0
 offset_bottom = 40.0
 grow_horizontal = 2
 script = ExtResource("1_n4no6")
@@ -200,19 +195,19 @@ script = ExtResource("1_n4no6")
 [node name="Minutes" type="Label" parent="CanvasLayer/GameTime"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.218
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.218
 anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = -18.0
-offset_right = -23.0
-offset_bottom = 19.0
+offset_left = -30.05
+offset_top = -21.0
+offset_right = 29.95
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_c6dcg")
+theme_override_font_sizes/font_size = 32
 text = "00:"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -221,16 +216,16 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
+anchor_left = 0.493
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.493
 anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -18.0
-offset_right = 24.0
-offset_bottom = 19.0
+offset_left = -29.925
+offset_top = -21.0
+offset_right = 30.075
+offset_bottom = 20.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_c6dcg")
+theme_override_font_sizes/font_size = 32
 text = "00:"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -238,19 +233,19 @@ vertical_alignment = 1
 [node name="Miliseconds" type="Label" parent="CanvasLayer/GameTime"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.787
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.787
 anchor_bottom = 0.5
-offset_left = 24.0
-offset_top = -18.0
-offset_right = 77.0
-offset_bottom = 19.0
+offset_left = -36.075
+offset_top = -21.0
+offset_right = 35.925
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_c6dcg")
+theme_override_font_sizes/font_size = 32
 text = "000"
 vertical_alignment = 1
 

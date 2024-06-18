@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxk13asxg0jdk"]
+[gd_scene load_steps=11 format=3 uid="uid://bxk13asxg0jdk"]
 
 [ext_resource type="Script" path="res://enemies/EnemyBoss.gd" id="1_c3y6t"]
 [ext_resource type="Texture2D" uid="uid://cum7egiccafo8" path="res://assets/enemies/boss-Sheet.png" id="1_xfd3b"]
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="2_5360q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_773r6"]
 atlas = ExtResource("1_xfd3b")
@@ -80,7 +79,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("2_5360q")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 scroll_active = false

@@ -1,7 +1,7 @@
 extends Node
 
 func readFile():
-	var file = FileAccess.open("res://assets/dictionaries/words_alpha.txt", FileAccess.READ)
+	var file = FileAccess.open("res://assets/dictionaries/left_hand_words.txt", FileAccess.READ)
 	var content: Array = []
 	
 	while !file.eof_reached():

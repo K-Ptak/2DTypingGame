@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dl6bsofnkbwo"]
+[gd_scene load_steps=22 format=3 uid="uid://dl6bsofnkbwo"]
 
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
 [ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://38571eokbv6k" path="res://assets/GUI/turnoff.png" id="5_0mlvc"]
 [ext_resource type="Script" path="res://menus/settings_box.gd" id="7_0vj54"]
 [ext_resource type="Texture2D" uid="uid://clgaa3smiqwts" path="res://assets/GUI/Logo.svg" id="7_7rexa"]
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="7_n2pr8"]
 [ext_resource type="PackedScene" uid="uid://fohx5enkv5k0" path="res://menus/volume_slider.tscn" id="8_urla1"]
 [ext_resource type="Texture2D" uid="uid://8vy574ni535b" path="res://assets/GUI/arrow_left.png" id="9_d0jjb"]
 [ext_resource type="AudioStream" uid="uid://m8emnsulv5sa" path="res://assets/sounds/enemy_death.wav" id="10_kvymv"]
@@ -52,15 +51,6 @@ terrain_set_0/terrain_0/name = "Metal"
 terrain_set_0/terrain_0/color = Color(0.57527, 1, 0.901811, 1)
 sources/0 = SubResource("TileSetAtlasSource_1oda0")
 
-[sub_resource type="Gradient" id="Gradient_jkkqr"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 0.764706, 0.168627, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j4jb6"]
-gradient = SubResource("Gradient_jkkqr")
-fill_from = Vector2(0.175214, 0.24359)
-fill_to = Vector2(0.91453, 0.790598)
-
 [node name="Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -88,21 +78,6 @@ script = ExtResource("3_tqng4")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 325)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -695.0
-offset_top = -479.0
-offset_right = -695.0
-offset_bottom = -479.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.22042, 2.75623)
-texture = SubResource("GradientTexture2D_j4jb6")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(584, -62)
 scale = Vector2(0.872429, 0.838919)
@@ -127,7 +102,6 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 35
 text = "Start game"
 icon = ExtResource("2_7i2gt")
@@ -137,7 +111,6 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 35
 text = "Leaderboards"
 icon = ExtResource("3_bj6ex")
@@ -147,7 +120,6 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 35
 text = "Settings"
 icon = ExtResource("4_lw7wv")
@@ -157,7 +129,6 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 35
 text = "Quit"
 icon = ExtResource("5_0mlvc")
@@ -192,7 +163,6 @@ offset_top = -71.296
 offset_right = 113.896
 offset_bottom = 71.704
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 37
 text = "Play sound"
 
@@ -203,9 +173,9 @@ anchor_left = 0.766
 anchor_top = 0.252
 anchor_right = 0.766
 anchor_bottom = 0.252
-offset_left = -91.432
+offset_left = -119.432
 offset_top = -17.296
-offset_right = 92.568
+offset_right = 118.568
 offset_bottom = 17.704
 theme_override_font_sizes/font_size = 25
 text = "Master Volume"
@@ -226,9 +196,9 @@ bus_name = "Master"
 
 [node name="Music Volume" type="Label" parent="SettingsBox"]
 layout_mode = 0
-offset_left = 797.0
+offset_left = 776.0
 offset_top = 272.0
-offset_right = 966.0
+offset_right = 991.0
 offset_bottom = 307.0
 theme_override_font_sizes/font_size = 25
 text = "Music Volume
@@ -245,10 +215,10 @@ bus_name = "Music"
 
 [node name="Sfx Volume" type="Label" parent="SettingsBox"]
 layout_mode = 0
-offset_left = 811.0
-offset_top = 366.0
-offset_right = 947.0
-offset_bottom = 401.0
+offset_left = 790.0
+offset_top = 380.0
+offset_right = 974.0
+offset_bottom = 415.0
 theme_override_font_sizes/font_size = 25
 text = "Sfx Volume"
 
@@ -318,7 +288,6 @@ offset_top = -42.208
 offset_right = 148.5
 offset_bottom = 41.792
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 57
 text = "Highscores"
 
@@ -383,22 +352,20 @@ vertical_icon_alignment = 2
 
 [node name="WizardName" type="Label" parent="CharacterSelectBox"]
 layout_mode = 0
-offset_left = 158.0
+offset_left = 147.0
 offset_top = 135.0
-offset_right = 243.0
+offset_right = 251.0
 offset_bottom = 170.0
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 25
 text = "Wizard
 "
 
 [node name="WizardDescription" type="Label" parent="CharacterSelectBox"]
 layout_mode = 0
-offset_left = 123.0
+offset_left = 86.0
 offset_top = 408.0
-offset_right = 276.0
+offset_right = 315.0
 offset_bottom = 443.0
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 25
 text = "Fireball spell"
 
@@ -416,21 +383,19 @@ vertical_icon_alignment = 2
 
 [node name="RangerName" type="Label" parent="CharacterSelectBox"]
 layout_mode = 0
-offset_left = 537.0
+offset_left = 524.0
 offset_top = 135.0
-offset_right = 623.0
+offset_right = 638.0
 offset_bottom = 170.0
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 25
 text = "Ranger"
 
 [node name="RangerDescription" type="Label" parent="CharacterSelectBox"]
 layout_mode = 0
-offset_left = 476.0
+offset_left = 443.0
 offset_top = 408.0
-offset_right = 688.0
+offset_right = 716.0
 offset_bottom = 443.0
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 25
 text = "Faster movement"
 
@@ -448,21 +413,19 @@ vertical_icon_alignment = 2
 
 [node name="WarriorDescription" type="Label" parent="CharacterSelectBox"]
 layout_mode = 0
-offset_left = 907.0
+offset_left = 883.0
 offset_top = 406.0
-offset_right = 1055.0
+offset_right = 1077.0
 offset_bottom = 441.0
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 25
 text = "More health"
 
 [node name="WarriorName" type="Label" parent="CharacterSelectBox"]
 layout_mode = 0
-offset_left = 940.0
+offset_left = 920.0
 offset_top = 135.0
-offset_right = 1034.0
+offset_right = 1046.0
 offset_bottom = 170.0
-theme_override_fonts/font = ExtResource("7_n2pr8")
 theme_override_font_sizes/font_size = 25
 text = "Warrior"
 

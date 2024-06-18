@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://qer5is0ulr8y"]
+[gd_scene load_steps=2 format=3 uid="uid://qer5is0ulr8y"]
 
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="1_rkow5"]
 [ext_resource type="Script" path="res://menus/GUI/UserScore.gd" id="2_4mg4o"]
 
 [node name="Death screen" type="Control"]
@@ -43,7 +42,6 @@ offset_left = -85.544
 offset_top = -29.976
 offset_right = 87.456
 offset_bottom = 30.024
-theme_override_fonts/font = ExtResource("1_rkow5")
 theme_override_font_sizes/font_size = 41
 text = "You died"
 
@@ -70,7 +68,6 @@ offset_left = -85.045
 offset_top = -25.5
 offset_right = 84.955
 offset_bottom = 24.5
-theme_override_fonts/font = ExtResource("1_rkow5")
 theme_override_font_sizes/font_size = 32
 text = "Score:"
 

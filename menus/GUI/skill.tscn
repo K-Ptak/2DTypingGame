@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmkgafiqcmsm4"]
+[gd_scene load_steps=8 format=3 uid="uid://cmkgafiqcmsm4"]
 
 [ext_resource type="Texture2D" uid="uid://bwgkoqbyto6tg" path="res://assets/GUI/skill_fireball.png" id="1_v06yj"]
 [ext_resource type="Script" path="res://menus/GUI/SkillRecharge.gd" id="2_rasyr"]
-[ext_resource type="FontFile" uid="uid://cict4wf384np1" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="3_7cdkm"]
 [ext_resource type="AudioStream" uid="uid://bdix6sychynii" path="res://assets/sounds/fireball_sound.wav" id="4_ldeku"]
 [ext_resource type="AudioStream" uid="uid://bfk6pyqbtgvro" path="res://assets/sounds/battery_pickup.wav" id="5_2anio"]
 
@@ -51,7 +50,6 @@ offset_left = -1.0
 offset_top = -2.0
 offset_right = 1162.0
 offset_bottom = 673.0
-theme_override_fonts/font = ExtResource("3_7cdkm")
 theme_override_font_sizes/font_size = 666
 text = "60"
 horizontal_alignment = 1

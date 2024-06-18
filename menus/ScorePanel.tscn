@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds01bfj6doktf"]
-
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="1_ac81c"]
+[gd_scene format=3 uid="uid://ds01bfj6doktf"]
 
 [node name="Panel" type="Panel"]
 offset_right = 236.0
@@ -16,7 +14,6 @@ offset_top = -24.5
 offset_right = 118.0
 offset_bottom = 25.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ac81c")
 theme_override_font_sizes/font_size = 34
 
 [node name="Label3" type="Label" parent="."]
@@ -31,11 +28,10 @@ offset_top = -24.0
 offset_right = 46.06
 offset_bottom = 26.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ac81c")
 theme_override_font_sizes/font_size = 34
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(664, 5)
+position = Vector2(681, 2)
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
@@ -50,8 +46,7 @@ offset_right = -26.0
 offset_bottom = 25.5
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ac81c")
 theme_override_font_sizes/font_size = 34
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(524, 4)
+position = Vector2(566, 2)

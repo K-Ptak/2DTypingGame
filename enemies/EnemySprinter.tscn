@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dftd3nr76x0uj"]
+[gd_scene load_steps=10 format=3 uid="uid://dftd3nr76x0uj"]
 
 [ext_resource type="Script" path="res://enemies/EnemySprinter.gd" id="1_hywgg"]
 [ext_resource type="Texture2D" uid="uid://c282qcfivcaob" path="res://assets/enemies/lizard-sheet.png" id="2_h5acx"]
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="3_yulkt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqlu4"]
 atlas = ExtResource("2_h5acx")
@@ -73,7 +72,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("3_yulkt")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 scroll_active = false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://tuh0636ori41"]
+[gd_scene load_steps=3 format=3 uid="uid://tuh0636ori41"]
 
 [ext_resource type="Script" path="res://menus/GUI/HSGameOverScreen.gd" id="1_fvhhc"]
-[ext_resource type="FontFile" uid="uid://by8pmquuldg07" path="res://assets/fonts/Indie_Flower/Noto_Sans_KR/static/NotoSansKR-Medium.ttf" id="2_7m3ug"]
 [ext_resource type="AudioStream" uid="uid://cukdeiwynlgm5" path="res://assets/sounds/highscore_saved.wav" id="3_pcu5u"]
 
 [node name="HSGameOverScreen" type="Panel"]
@@ -18,7 +17,6 @@ offset_left = -151.544
 offset_top = -32.976
 offset_right = 153.456
 offset_bottom = 27.024
-theme_override_fonts/font = ExtResource("2_7m3ug")
 theme_override_font_sizes/font_size = 41
 text = "New Highscore!"
 
@@ -34,7 +32,6 @@ offset_left = -65.392
 offset_top = -25.096
 offset_right = 65.608
 offset_bottom = 24.904
-theme_override_fonts/font = ExtResource("2_7m3ug")
 theme_override_font_sizes/font_size = 32
 text = "00:00:00"
 
@@ -49,7 +46,6 @@ offset_left = -86.0
 offset_top = -24.776
 offset_right = 84.0
 offset_bottom = 25.224
-theme_override_fonts/font = ExtResource("2_7m3ug")
 theme_override_font_sizes/font_size = 32
 text = "Your Time:"
 
@@ -117,7 +113,6 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6, 1.6)
-theme_override_fonts/font = ExtResource("2_7m3ug")
 theme_override_font_sizes/font_size = 15
 placeholder_text = "-- enter your name --"
 alignment = 1
