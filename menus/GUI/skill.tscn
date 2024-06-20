@@ -35,6 +35,21 @@ scale = Vector2(0.765969, 0.796433)
 texture = ExtResource("1_v06yj")
 script = ExtResource("2_rasyr")
 
+[node name="SpellLabel" type="Label" parent="."]
+offset_left = -28.7218
+offset_top = -46.4571
+offset_right = 135.278
+offset_bottom = -5.45711
+theme_override_colors/font_color = Color(0.698039, 0.0627451, 0.188235, 1)
+theme_override_font_sizes/font_size = 32
+text = "Fireball"
+
+[node name="SpacebarLabel" type="Label" parent="."]
+offset_left = -2.61107
+offset_right = 107.389
+offset_bottom = 21.0
+text = "(spacebar)"
+
 [node name="RechargePanel" type="Panel" parent="."]
 visible = false
 offset_left = -150.0
@@ -46,11 +61,11 @@ scale = Vector2(0.258201, 0.1488)
 [node name="CountdownLabel" type="Label" parent="RechargePanel"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 1162.0
-offset_bottom = 673.0
-theme_override_font_sizes/font_size = 666
+offset_left = 10.0
+offset_top = 15.0
+offset_right = 1152.0
+offset_bottom = 657.0
+theme_override_font_sizes/font_size = 400
 text = "60"
 horizontal_alignment = 1
 vertical_alignment = 1
