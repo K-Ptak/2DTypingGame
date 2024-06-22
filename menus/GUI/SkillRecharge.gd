@@ -13,12 +13,16 @@ func _process(_delta):
 
 func SkillRecharge():
 	$RechargePanel/SkillAudio.play()
+	$SpellLabel.visible = !$SpellLabel.visible
+	$SpacebarLabel.visible = !$SpacebarLabel.visible
 	$RechargePanel.visible = !$RechargePanel.visible
 	$RechargePanel/ExplosionEffect.emitting = !$RechargePanel/ExplosionEffect.emitting
 	%CountdownTimer.start(recharge)
 	
 func _on_countdown_timer_timeout():
 	$RechargePanel.visible = !$RechargePanel.visible
+	$SpellLabel.visible = !$SpellLabel.visible
+	$SpacebarLabel.visible = !$SpacebarLabel.visible
 
 func fast_recharge(time):
 	%CountdownTimer.start(%CountdownTimer.time_left/time)
