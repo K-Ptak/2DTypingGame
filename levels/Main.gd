@@ -48,7 +48,6 @@ func find_new_active_enemy(typed_character: String):
 		var prompt = enemy.get_prompt()
 		var next_character = prompt.substr(0, 1)
 		if next_character == typed_character:
-			print("found new enemy that starts with %s" % next_character)
 			active_enemy = enemy
 			current_letter_index = 1
 			active_enemy.set_next_character(current_letter_index)

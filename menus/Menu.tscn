@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
 [ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
 [ext_resource type="Texture2D" uid="uid://byj0kwa0b4cmf" path="res://assets/background/Tileset.png" id="2_5gejv"]
-[ext_resource type="Texture2D" uid="uid://wv8an4yw7rxn" path="res://assets/GUI/leaderboards.png" id="3_bj6ex"]
 [ext_resource type="Script" path="res://menus/MainMenuBackground.gd" id="3_tqng4"]
-[ext_resource type="Texture2D" uid="uid://c7gkk2dyia0xg" path="res://assets/GUI/startgame.png" id="6_2wcss"]
+[ext_resource type="Texture2D" uid="uid://lnnwb57frcgo" path="res://assets/GUI/startgame_outline.png" id="6_m54jo"]
 [ext_resource type="Script" path="res://menus/settings_box.gd" id="7_0vj54"]
 [ext_resource type="Texture2D" uid="uid://clgaa3smiqwts" path="res://assets/GUI/Logo.svg" id="7_7rexa"]
-[ext_resource type="Texture2D" uid="uid://g317i7j2s2k4" path="res://assets/GUI/options.png" id="8_uincp"]
+[ext_resource type="Texture2D" uid="uid://c617own3agiak" path="res://assets/GUI/leaderboards_outline.png" id="7_rgrsr"]
+[ext_resource type="Texture2D" uid="uid://br8gptk7jbs86" path="res://assets/GUI/options_outline.png" id="8_l2cyl"]
 [ext_resource type="PackedScene" uid="uid://fohx5enkv5k0" path="res://menus/volume_slider.tscn" id="8_urla1"]
-[ext_resource type="Texture2D" uid="uid://tkyxcnmefwvc" path="res://assets/GUI/exit.png" id="9_1guee"]
+[ext_resource type="Texture2D" uid="uid://bbuwo00qcetws" path="res://assets/GUI/exit_outline.png" id="9_g12yg"]
 [ext_resource type="AudioStream" uid="uid://m8emnsulv5sa" path="res://assets/sounds/enemy_death.wav" id="10_kvymv"]
 [ext_resource type="Texture2D" uid="uid://bl53ui1bsoj7e" path="res://assets/GUI/button.png" id="12_ig83s"]
 [ext_resource type="Texture2D" uid="uid://cshe11vvxq13n" path="res://assets/GUI/GUI-huge.png" id="12_v3qsk"]
@@ -1293,10 +1293,9 @@ offset_right = 605.0
 offset_bottom = 14.0
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 35
 text = "Start game"
-icon = ExtResource("6_2wcss")
+icon = ExtResource("6_m54jo")
 expand_icon = true
 
 [node name="Leaderboards" type="Button" parent="ButtonBox"]
@@ -1310,7 +1309,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 35
 text = "Leaderboards"
-icon = ExtResource("3_bj6ex")
+icon = ExtResource("7_rgrsr")
 expand_icon = true
 
 [node name="OptionsButton" type="Button" parent="ButtonBox"]
@@ -1324,7 +1323,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 35
 text = "Settings"
-icon = ExtResource("8_uincp")
+icon = ExtResource("8_l2cyl")
 expand_icon = true
 
 [node name="QuitButton" type="Button" parent="ButtonBox"]
@@ -1337,7 +1336,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 35
 text = "Quit"
-icon = ExtResource("9_1guee")
+icon = ExtResource("9_g12yg")
 expand_icon = true
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
