@@ -1,38 +1,45 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxk13asxg0jdk"]
+[gd_scene load_steps=12 format=3 uid="uid://bxk13asxg0jdk"]
 
 [ext_resource type="Script" path="res://enemies/EnemyBoss.gd" id="1_c3y6t"]
 [ext_resource type="Texture2D" uid="uid://cum7egiccafo8" path="res://assets/enemies/boss-Sheet.png" id="1_xfd3b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j00uu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbbao"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(0, 0, 512, 500)
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e42ev"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kaj8"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(512, 0, 512, 500)
+region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngxn2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oxmw"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(1024, 0, 512, 500)
+region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qwfr3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lctb2"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(1536, 0, 512, 500)
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmc60"]
+atlas = ExtResource("1_xfd3b")
+region = Rect2(400, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iruta"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j00uu")
+"texture": SubResource("AtlasTexture_pbbao")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e42ev")
+"texture": SubResource("AtlasTexture_7kaj8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ngxn2")
+"texture": SubResource("AtlasTexture_5oxmw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qwfr3")
+"texture": SubResource("AtlasTexture_lctb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmc60")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -40,30 +47,30 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aqgf"]
-size = Vector2(438, 205)
+size = Vector2(383, 305)
 
 [sub_resource type="Curve2D" id="Curve2D_d02ds"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -20.012, 15.0102, 0, 0, 0, 0, 1594.88, 11.5231, 0, 0, 0, 0, 2397.96, -4.95776, 0, 0, 0, 0, 2613.07, 442.889, 0, 0, 0, 0, 2774.4, 1338.58, 0, 0, 0, 0, 2666.84, 2084.99, 0, 0, 0, 0, 2397.96, 2532.84, 0, 0, 0, 0, 1591.31, 2667.82, 0, 0, 0, 0, -1635.31, 2667.82, 0, 0, 0, 0, -2441.96, 2682.12, 0, 0, 0, 0, -2603.29, 2383.56, 0, 0, 0, 0, -2818.4, 1338.58, 0, 0, 0, 0, -2603.29, 293.607, 0, 0, 0, 0, -2388.18, -4.95776, 0, 0, 0, 0, -1635.31, 58.4178, 0, 0, 0, 0, -22, 16.9761)
+"points": PackedVector2Array(0, 0, 0, 0, 2129.07, -2077.09, 0, 0, 0, 0, 2129.07, 1637.15, 0, 0, 0, 0, -1312.64, 1637.15, 0, 0, 0, 0, -1320.69, -2071.78, 0, 0, 0, 0, 2091.48, -2071.78)
 }
-point_count = 16
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyrov"]
-size = Vector2(453, 222)
+size = Vector2(438, 314)
 
 [node name="EnemyBoss" type="CharacterBody2D"]
+position = Vector2(2, 30)
 script = ExtResource("1_c3y6t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-9.05991e-06, 0)
+position = Vector2(0, 1)
+scale = Vector2(3.97, 3.97)
 sprite_frames = SubResource("SpriteFrames_iruta")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame = 3
 frame_progress = 0.179798
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5aqgf")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -72,10 +79,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -75.0
-offset_right = 73.0
-offset_bottom = -35.0
+offset_left = -78.0
+offset_top = -230.0
+offset_right = 68.0
+offset_bottom = -190.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -86,14 +93,14 @@ scroll_active = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-0.409088, 22.0332)
-scale = Vector2(-0.0185954, 0.00669872)
+position = Vector2(-0.384354, 22.2666)
+scale = Vector2(-0.0184633, 0.00640347)
 curve = SubResource("Curve2D_d02ds")
 
 [node name="ProjectilePath" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(-20.012, 15.0102)
-rotation = -0.00215934
+position = Vector2(2129.07, -2077.09)
+rotation = 1.5708
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Path2D/ProjectilePath"]
 unique_name_in_owner = true
@@ -101,7 +108,7 @@ unique_name_in_owner = true
 [node name="BossHitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitBox"]
-position = Vector2(0.5, 1)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_vyrov")
 
 [node name="Timer" type="Timer" parent="."]

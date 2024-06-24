@@ -25,5 +25,6 @@ func _on_countdown_timer_timeout():
 	$SpacebarLabel.visible = !$SpacebarLabel.visible
 
 func fast_recharge(time):
-	%CountdownTimer.start(%CountdownTimer.time_left/time)
+	if(!%CountdownTimer.is_stopped):
+		%CountdownTimer.start(%CountdownTimer.time_left/time)
 	$RechargePanel/BatteryPickupSound.play()
