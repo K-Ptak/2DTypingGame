@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s6x00yhtj00y"]
+[gd_scene load_steps=8 format=3 uid="uid://s6x00yhtj00y"]
 
 [ext_resource type="Script" path="res://enemies/EnemyBasic.gd" id="1_ys6w1"]
 [ext_resource type="Texture2D" uid="uid://xtff6iebfg64" path="res://assets/enemies/rat-Sheet.png" id="2_kluw0"]
@@ -11,18 +11,6 @@ region = Rect2(0, 0, 100, 100)
 atlas = ExtResource("2_kluw0")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4y7mr"]
-atlas = ExtResource("2_kluw0")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1qgkv"]
-atlas = ExtResource("2_kluw0")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uioh"]
-atlas = ExtResource("2_kluw0")
-region = Rect2(400, 0, 100, 100)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ekwe3"]
 animations = [{
 "frames": [{
@@ -31,15 +19,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d5kl2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4y7mr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1qgkv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5uioh")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -63,7 +42,6 @@ animation = &"new_animation"
 autoplay = "new_animation"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 17.5)
 shape = SubResource("RectangleShape2D_p3l3x")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -88,5 +66,4 @@ metadata/_edit_use_anchors_ = true
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(1.5, 17.5)
 shape = SubResource("RectangleShape2D_xxeah")

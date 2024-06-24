@@ -3,36 +3,36 @@
 [ext_resource type="Script" path="res://enemies/EnemyBoss.gd" id="1_c3y6t"]
 [ext_resource type="Texture2D" uid="uid://cum7egiccafo8" path="res://assets/enemies/boss-Sheet.png" id="1_xfd3b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_773r6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j00uu"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(0, 0, 500, 500)
+region = Rect2(0, 0, 512, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_isdxe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e42ev"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(500, 0, 500, 500)
+region = Rect2(512, 0, 512, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yo0ml"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngxn2"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(1000, 0, 500, 500)
+region = Rect2(1024, 0, 512, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_suxn1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwfr3"]
 atlas = ExtResource("1_xfd3b")
-region = Rect2(1500, 0, 500, 500)
+region = Rect2(1536, 0, 512, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iruta"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_773r6")
+"texture": SubResource("AtlasTexture_j00uu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_isdxe")
+"texture": SubResource("AtlasTexture_e42ev")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yo0ml")
+"texture": SubResource("AtlasTexture_ngxn2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_suxn1")
+"texture": SubResource("AtlasTexture_qwfr3")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -59,7 +59,8 @@ position = Vector2(-9.05991e-06, 0)
 sprite_frames = SubResource("SpriteFrames_iruta")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.0556064
+frame = 3
+frame_progress = 0.179798
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

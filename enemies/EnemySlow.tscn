@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://enemies/EnemySlow.gd" id="1_lv8pi"]
 [ext_resource type="Texture2D" uid="uid://5ecpny10rbvx" path="res://assets/enemies/snake-Sheet.png" id="2_5buji"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixql3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m40qp"]
 atlas = ExtResource("2_5buji")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xa0u3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnps7"]
 atlas = ExtResource("2_5buji")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yc5ap"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuxv4"]
 atlas = ExtResource("2_5buji")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5j4if"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_poemh"]
 atlas = ExtResource("2_5buji")
 region = Rect2(300, 0, 100, 100)
 
@@ -23,16 +23,16 @@ region = Rect2(300, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ixql3")
+"texture": SubResource("AtlasTexture_m40qp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xa0u3")
+"texture": SubResource("AtlasTexture_wnps7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yc5ap")
+"texture": SubResource("AtlasTexture_tuxv4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5j4if")
+"texture": SubResource("AtlasTexture_poemh")
 }],
 "loop": true,
 "name": &"default",

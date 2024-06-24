@@ -418,7 +418,7 @@ texture = ExtResource("2_ftgs5")
 stretch_mode = 1
 
 [node name="Skill" parent="CanvasLayer" instance=ExtResource("6_2wh81")]
-position = Vector2(1781, 1022)
+position = Vector2(1761, 1022)
 
 [node name="GameTime" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
