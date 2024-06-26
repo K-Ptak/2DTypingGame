@@ -63,7 +63,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print("Key typed %s" % key_typed)
 		if active_enemy == null:
 			find_new_active_enemy(key_typed)
-		elif key_typed == "Delete":
+		elif key_typed == "Delete" or key_typed == "Backspace":
 			active_enemy.reset_prompt()
 			active_enemy = null
 		else:

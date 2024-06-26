@@ -60,6 +60,7 @@ size = Vector2(438, 314)
 
 [node name="EnemyBoss" type="CharacterBody2D"]
 position = Vector2(2, 30)
+scale = Vector2(0.882744, 0.882744)
 script = ExtResource("1_c3y6t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -79,10 +80,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -230.0
-offset_right = 68.0
-offset_bottom = -190.0
+offset_left = -75.0
+offset_top = -210.0
+offset_right = 71.0
+offset_bottom = -170.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

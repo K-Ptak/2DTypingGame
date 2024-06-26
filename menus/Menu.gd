@@ -25,3 +25,10 @@ func _on_soundtrack_finished():
 
 func _on_exit_settings_button_pressed():
 	_on_options_button_pressed()
+
+
+func _on_tutorial_button_pressed():
+	%ButtonBox.visible = !%ButtonBox.visible
+	%TutorialBox.visible = !%TutorialBox.visible
+	%TutorialButton.visible = !%TutorialButton.visible
+	%TutorialBackground.visible = !%TutorialBackground.visible

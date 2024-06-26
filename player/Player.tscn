@@ -24,10 +24,20 @@ func _ready():
 			max_hp = 5
 			hp = max_hp
 
+func GUI_screen_visible() -> bool:
+	if(%Player/GUI/PauseScreen.visible == false and %Player/GUI/WinScreen.visible == false and %Player/GUI/GameOverScreen.visible == false and %Player/GUI/HSGameOverScreen.visible == false):
+		return false
+	else:
+		return true
+
 func get_input():
-	if(%Player/GUI/PauseScreen.visible == false):
+	if(!GUI_screen_visible()):
+		
 		var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
 		velocity = input_direction * speed
+		
+		if(GUI_screen_visible()):
+			velocity = input_direction * -speed
 	
 		if Input.is_action_pressed(\"left\"):
 			$Sprite2D.flip_h = true
@@ -36,16 +46,17 @@ func get_input():
 			$Sprite2D.flip_h = false
 			
 		if Input.is_action_just_pressed(\"skill\") and GlobalVars.hasSpell:
-			if(%Player/GUI/CanvasLayer/Skill/RechargePanel/CountdownTimer.time_left == 0 && %Player/Sprite2D.visible):
-				%Player/GUI/CanvasLayer/Skill.SkillRecharge()
-				get_parent().screen_clear()
-	
+				if(%Player/GUI/CanvasLayer/Skill/RechargePanel/CountdownTimer.time_left == 0 && %Player/Sprite2D.visible):
+					%Player/GUI/CanvasLayer/Skill.SkillRecharge()
+					get_parent().screen_clear()
+	else:
+		velocity = Vector2(0,0)
 		
 	if Input.is_action_just_pressed(\"pause\"):
 		%Player/GUI/PauseScreen.visible = !%Player/GUI/PauseScreen.visible
 		%Player/GUI/CanvasLayer/Skill/RechargePanel/CountdownTimer.paused = !%Player/GUI/CanvasLayer/Skill/RechargePanel/CountdownTimer.paused
 		get_tree().paused = !get_tree().paused
-		
+			
 	
 
 func _physics_process(_delta):
