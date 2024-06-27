@@ -295,14 +295,14 @@ text = "Score:"
 [node name="Label3" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.599
-anchor_right = 0.5
-anchor_bottom = 1.599
-offset_left = -104.108
-offset_top = -24.995
-offset_right = 103.892
-offset_bottom = 25.005
+anchor_left = 0.15
+anchor_top = 2.071
+anchor_right = 0.15
+anchor_bottom = 2.071
+offset_left = -104.158
+offset_top = -25.011
+offset_right = 103.842
+offset_bottom = 24.989
 theme_override_font_sizes/font_size = 32
 text = "Your Time:"
 
@@ -310,30 +310,31 @@ text = "Your Time:"
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 2.448
-anchor_right = 0.5
-anchor_bottom = 2.448
-offset_left = -84.108
-offset_top = -24.992
-offset_right = 83.892
-offset_bottom = 25.008
+anchor_left = 0.793
+anchor_top = 2.052
+anchor_right = 0.793
+anchor_bottom = 2.052
+offset_left = -95.849
+offset_top = -25.004
+offset_right = 96.151
+offset_bottom = 24.996
 theme_override_font_sizes/font_size = 32
-text = "00:00:00"
+text = "00:00:000"
 
 [node name="UserScore" type="Label" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.736
-anchor_top = 0.538
-anchor_right = 0.736
-anchor_bottom = 0.538
-offset_left = -86.032
-offset_top = -24.514
-offset_right = 85.968
-offset_bottom = 24.486
+anchor_left = 0.74
+anchor_top = 0.476
+anchor_right = 0.74
+anchor_bottom = 0.476
+offset_left = -95.988
+offset_top = -26.476
+offset_right = 86.012
+offset_bottom = 22.524
 theme_override_font_sizes/font_size = 35
+text = "0000000"
 
 [node name="TileMap" type="TileMap" parent="Panel"]
 tile_set = SubResource("TileSet_6dk0x")
@@ -371,7 +372,6 @@ text = "Main menu"
 flat = true
 
 [node name="HSLabel" type="Label" parent="Panel"]
-visible = false
 layout_mode = 0
 offset_left = 374.0
 offset_top = 8.0
@@ -382,7 +382,6 @@ text = "New Highscore!"
 
 [node name="PlayerName" type="LineEdit" parent="Panel"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -403,17 +402,16 @@ max_length = 15
 
 [node name="HSSaveButton" type="Button" parent="Panel"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.653
 anchor_top = 0.6
 anchor_right = 0.653
 anchor_bottom = 0.6
-offset_left = 167.939
-offset_top = 131.2
-offset_right = 223.939
-offset_bottom = 169.2
+offset_left = 168.331
+offset_top = 132.952
+offset_right = 224.331
+offset_bottom = 170.952
 text = "Save"
 
 [node name="HSSaveSound" type="AudioStreamPlayer" parent="Panel"]

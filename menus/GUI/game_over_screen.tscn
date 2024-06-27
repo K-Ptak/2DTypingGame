@@ -249,10 +249,10 @@ anchor_left = 0.497
 anchor_top = 0.162
 anchor_right = 0.497
 anchor_bottom = 0.162
-offset_left = -108.0
-offset_top = -29.976
-offset_right = 114.0
-offset_bottom = 30.024
+offset_left = -111.0
+offset_top = -29.0
+offset_right = 111.0
+offset_bottom = 31.0
 theme_override_font_sizes/font_size = 41
 text = "You died"
 
@@ -263,10 +263,10 @@ anchor_left = 0.496
 anchor_top = 0.299
 anchor_right = 0.496
 anchor_bottom = 0.299
-offset_left = -168.392
-offset_top = -26.752
-offset_right = 168.608
-offset_bottom = 26.248
+offset_left = -168.0
+offset_top = -27.0
+offset_right = 169.0
+offset_bottom = 26.0
 
 [node name="Label2" type="Label" parent="Panel"]
 layout_mode = 1
@@ -289,10 +289,10 @@ anchor_left = 0.285
 anchor_top = 0.5
 anchor_right = 0.285
 anchor_bottom = 0.5
-offset_left = -21.045
-offset_top = 33.5
-offset_right = 186.955
-offset_bottom = 83.5
+offset_left = -144.045
+offset_top = 41.5
+offset_right = 63.955
+offset_bottom = 91.5
 theme_override_font_sizes/font_size = 32
 text = "Your Time:"
 
@@ -304,12 +304,12 @@ anchor_left = 0.453
 anchor_top = 2.698
 anchor_right = 0.453
 anchor_bottom = 2.698
-offset_left = -65.661
-offset_top = -24.994
-offset_right = 102.339
-offset_bottom = 25.006
+offset_left = 17.339
+offset_top = -75.994
+offset_right = 209.339
+offset_bottom = -25.994
 theme_override_font_sizes/font_size = 32
-text = "00:00:00"
+text = "00:00:000"
 
 [node name="UserScore" type="Label" parent="Panel"]
 unique_name_in_owner = true
