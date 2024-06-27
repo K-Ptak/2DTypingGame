@@ -1,0 +1,555 @@
+[gd_scene load_steps=21 format=3 uid="uid://bouigtkjllql2"]
+
+[ext_resource type="Script" path="res://menus/GUI/GameTime.gd" id="1_n4no6"]
+[ext_resource type="Texture2D" uid="uid://ve1sdea7rq5b" path="res://assets/GUI/heart-full.png" id="2_ftgs5"]
+[ext_resource type="Texture2D" uid="uid://cshe11vvxq13n" path="res://assets/GUI/GUI-huge.png" id="3_pfrvr"]
+[ext_resource type="Script" path="res://menus/GUI/Score.gd" id="4_0en27"]
+[ext_resource type="PackedScene" uid="uid://cmkgafiqcmsm4" path="res://menus/GUI/skill.tscn" id="6_2wh81"]
+[ext_resource type="AudioStream" uid="uid://d38l1hvumagx1" path="res://assets/sounds/player_hurt.wav" id="8_fy6iv"]
+[ext_resource type="PackedScene" uid="uid://b5cowvafukc3v" path="res://menus/GUI/win_screen.tscn" id="9_hew0w"]
+[ext_resource type="PackedScene" uid="uid://tuh0636ori41" path="res://menus/GUI/hs_game_over_screen.tscn" id="10_f08cn"]
+[ext_resource type="PackedScene" uid="uid://ckj67v4jqu7a2" path="res://menus/GUI/pause_screen.tscn" id="10_r0l0h"]
+[ext_resource type="PackedScene" uid="uid://cfa8awhbe8fm6" path="res://menus/GUI/game_over_screen.tscn" id="11_wv843"]
+[ext_resource type="AudioStream" uid="uid://b7gw5yolqn3g5" path="res://assets/sounds/player_death.wav" id="13_586rv"]
+[ext_resource type="AudioStream" uid="uid://dvmlhll1el8li" path="res://assets/sounds/hp_pickup.wav" id="13_qxe73"]
+[ext_resource type="AudioStream" uid="uid://bt0u8x0jt12lq" path="res://assets/sounds/mousetrap_sound.wav" id="14_gy6fu"]
+[ext_resource type="AudioStream" uid="uid://dorikkmldjvqg" path="res://assets/sounds/double_pickup.wav" id="15_ay5mc"]
+[ext_resource type="AudioStream" uid="uid://r56rc2jlitc8" path="res://assets/sounds/bomb_pickup.wav" id="16_rq6gb"]
+[ext_resource type="AudioStream" uid="uid://csis87lbh1lbc" path="res://assets/sounds/winfanfare.wav" id="17_s081a"]
+[ext_resource type="AudioStream" uid="uid://daucs6xornuhy" path="res://assets/sounds/PlayerWinSound.wav" id="19_ymxub"]
+
+[sub_resource type="GDScript" id="GDScript_rj55e"]
+resource_local_to_scene = true
+script/source = "extends Control
+
+var heart_size: int = 64
+var temp_highscore:int = 0
+var more_health:bool
+
+func _ready():
+	if(GlobalVars.characterSelected == 1 or GlobalVars.characterSelected == 2):
+		$Hearts.size.x = heart_size * 3
+		more_health = false
+	else:
+		$Hearts.size.x = heart_size * 5
+		more_health = true
+	
+	var hs_to_beat = 0000000
+	for hs in DataManagement.save_data.highscores:
+		if hs_to_beat < int(hs):
+			hs_to_beat = int(hs)
+
+	temp_highscore = hs_to_beat
+
+func player_damaged():
+	if $Hearts.size.x != heart_size:
+		%PlayerHurtSound.play()
+		$Hearts.size.x = $Hearts.size.x - heart_size
+	else:
+		get_parent().get_parent().get_parent().get_parent().delete_all_entities()
+		get_parent().get_child(1).visible = !get_parent().get_child(1).visible
+		%CanvasLayer.visible = !%CanvasLayer.visible
+		if(int(%Score.text) >= temp_highscore):
+			highscore_over_screen()
+		else:
+			game_over_screen()
+			
+func player_win():
+	get_parent().get_parent().get_parent().get_parent().delete_all_entities()
+	get_parent().get_child(1).visible = !get_parent().get_child(1).visible
+	%CanvasLayer.visible = !%CanvasLayer.visible
+	win_screen()
+
+func player_healed():
+	%HealthPickupSound.play()
+	if !more_health and $Hearts.size.x < heart_size * 3:
+		$Hearts.size.x = $Hearts.size.x + heart_size
+	elif more_health and $Hearts.size.x < heart_size * 5:
+		$Hearts.size.x = $Hearts.size.x + heart_size
+		
+func player_slowed():
+	%MousetrapSound.play()
+
+func highscore_over_screen():
+	%HSGameOverScreen.visible = !%HSGameOverScreen.visible
+	var minutes = %Minutes.text
+	var seconds = %Seconds.text
+	var miliseconds = %Miliseconds.text
+	GlobalVars.tempTime = str(minutes+seconds+miliseconds)
+	
+	%HSGameOverScreen/UserTime.text = GlobalVars.tempTime
+	%HSGameOverScreen/UserScore.text = %Score.text
+	
+	get_tree().paused = !get_tree().paused
+	%PlayerDeathSound.play()
+
+func game_over_screen():
+	%GameOverScreen.visible = !%GameOverScreen.visible
+	var minutes = %Minutes.text
+	var seconds = %Seconds.text
+	var miliseconds = %Miliseconds.text
+	
+	%GameOverScreen/Panel/UserTime.text = str(minutes+seconds+miliseconds)
+	%GameOverScreen/Panel/UserScore.text = %Score.text
+	
+	get_tree().paused = !get_tree().paused
+	%PlayerDeathSound.play()
+
+func win_screen():
+	%WinScreen.visible = !%WinScreen.visible
+	var minutes = %Minutes.text
+	var seconds = %Seconds.text
+	var miliseconds = %Miliseconds.text
+	GlobalVars.win = true
+	
+	if(int(%Score.text) >= temp_highscore):
+		GlobalVars.tempTime = str(minutes+seconds+miliseconds)
+		%WinScreen/Panel/HSLabel.visible = !%WinScreen/Panel/HSLabel.visible
+		%WinScreen/Panel/PlayerName.visible = !%WinScreen/Panel/PlayerName.visible
+		%WinScreen/Panel/HSSaveButton.visible = !%WinScreen/Panel/HSSaveButton.visible
+		
+	%WinScreen/Panel/UserTime.text = str(minutes+seconds+miliseconds)
+	%WinScreen/Panel/UserScore.text = %Score.text
+	
+	get_tree().paused = !get_tree().paused
+	%PlayerWinSound.play()
+"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8i6u"]
+texture = ExtResource("3_pfrvr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+3:3/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4qsm0"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_l8i6u")
+
+[node name="GUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerScore" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 3.0
+offset_top = 957.0
+offset_right = 291.0
+offset_bottom = 1041.0
+
+[node name="Score" type="Label" parent="CanvasLayer/PlayerScore"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.394
+anchor_top = 0.494
+anchor_right = 0.394
+anchor_bottom = 0.494
+offset_left = -83.472
+offset_top = -9.496
+offset_right = 105.528
+offset_bottom = 37.504
+theme_override_font_sizes/font_size = 36
+text = "0000000"
+horizontal_alignment = 1
+script = ExtResource("4_0en27")
+
+[node name="Multiplier" type="Label" parent="CanvasLayer/PlayerScore"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.832
+anchor_top = 0.571
+anchor_right = 0.832
+anchor_bottom = 0.571
+offset_left = -21.616
+offset_top = -9.964
+offset_right = 57.384
+offset_bottom = 59.036
+theme_override_colors/font_color = Color(0.878431, 0.145098, 0.356863, 1)
+theme_override_font_sizes/font_size = 53
+text = "x1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLife" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 64.0
+script = SubResource("GDScript_rj55e")
+
+[node name="Hearts" type="TextureRect" parent="CanvasLayer/PlayerLife"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 64.0
+texture = ExtResource("2_ftgs5")
+stretch_mode = 1
+
+[node name="Skill" parent="CanvasLayer" instance=ExtResource("6_2wh81")]
+position = Vector2(1761, 1022)
+
+[node name="GameTime" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_right = 112.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_n4no6")
+
+[node name="TileMap" type="TileMap" parent="CanvasLayer/GameTime"]
+tile_set = SubResource("TileSet_4qsm0")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 196608, 2, 3, 327680, 2, 2, 262144, 2, 1, 262144, 2)
+
+[node name="Minutes" type="Label" parent="CanvasLayer/GameTime"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.218
+anchor_top = 0.5
+anchor_right = 0.218
+anchor_bottom = 0.5
+offset_left = -18.05
+offset_top = -12.0
+offset_right = 41.95
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "00:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seconds" type="Label" parent="CanvasLayer/GameTime"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.493
+anchor_top = 0.5
+anchor_right = 0.493
+anchor_bottom = 0.5
+offset_left = -17.925
+offset_top = -12.0
+offset_right = 42.075
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "00:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Miliseconds" type="Label" parent="CanvasLayer/GameTime"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.787
+anchor_top = 0.5
+anchor_right = 0.787
+anchor_bottom = 0.5
+offset_left = -24.075
+offset_top = -12.0
+offset_right = 47.925
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "000"
+vertical_alignment = 1
+
+[node name="PauseScreen" parent="." instance=ExtResource("10_r0l0h")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="WinScreen" parent="." instance=ExtResource("9_hew0w")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="GameOverScreen" parent="." instance=ExtResource("11_wv843")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HSGameOverScreen" parent="." instance=ExtResource("10_f08cn")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PlayerHurtSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_fy6iv")
+bus = &"Sfx"
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_586rv")
+bus = &"Sfx"
+
+[node name="HealthPickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_qxe73")
+bus = &"Sfx"
+
+[node name="MousetrapSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_gy6fu")
+bus = &"Sfx"
+
+[node name="DoublePickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_ay5mc")
+bus = &"Sfx"
+
+[node name="BombPickupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("16_rq6gb")
+bus = &"Sfx"
+
+[node name="WinFanfareSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_s081a")
+bus = &"Sfx"
+
+[node name="PlayerWinSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("19_ymxub")
+bus = &"Sfx"

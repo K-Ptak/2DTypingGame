@@ -49,6 +49,11 @@ func get_input():
 				if(%Player/GUI/CanvasLayer/Skill/RechargePanel/CountdownTimer.time_left == 0 && %Player/Sprite2D.visible):
 					%Player/GUI/CanvasLayer/Skill.SkillRecharge()
 					get_parent().screen_clear()
+	
+					if !get_parent().active_enemies.is_empty():
+						for enemy in get_parent().active_enemies:
+							enemy.reset_prompt()
+						get_parent().active_enemies.clear()
 	else:
 		velocity = Vector2(0,0)
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dl6bsofnkbwo"]
+[gd_scene load_steps=46 format=3 uid="uid://dl6bsofnkbwo"]
 
 [ext_resource type="Script" path="res://menus/Menu.gd" id="1_u7lc4"]
 [ext_resource type="AudioStream" uid="uid://b6ftmxi8upa57" path="res://assets/music/Strange Strings.wav" id="2_1caw2"]
@@ -23,6 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://dheqh363kuq14" path="res://assets/player/ranger-class.png" id="19_o1cw3"]
 [ext_resource type="Texture2D" uid="uid://876nwwuyanwo" path="res://assets/player/warrior-class.png" id="20_xuojy"]
 [ext_resource type="Script" path="res://menus/TutorialBox.gd" id="23_kohdk"]
+[ext_resource type="Texture2D" uid="uid://5ecpny10rbvx" path="res://assets/enemies/snake-Sheet.png" id="24_qtvtg"]
+[ext_resource type="Texture2D" uid="uid://c8e0s5643gi27" path="res://assets/pickups/mousetrap.png" id="25_vfhoo"]
+[ext_resource type="Texture2D" uid="uid://0un5l0gq0isj" path="res://assets/pickups/healthpack.png" id="26_2awgv"]
+[ext_resource type="Texture2D" uid="uid://cc1rffclyho13" path="res://assets/pickups/bomb.png" id="27_leura"]
+[ext_resource type="Texture2D" uid="uid://cfijd6d5kpbtt" path="res://assets/pickups/battery.png" id="28_swdbs"]
+[ext_resource type="Texture2D" uid="uid://cum7egiccafo8" path="res://assets/enemies/boss-Sheet.png" id="29_gbp78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1oda0"]
 texture = ExtResource("2_5gejv")
@@ -1471,6 +1477,242 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_qqwby")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tj882"]
+texture = ExtResource("12_v3qsk")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0nh6j"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_tj882")
+
 [node name="Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -1983,20 +2225,132 @@ offset_bottom = 31.968
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_1w62u")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TutorialBox"]
-layout_mode = 0
-offset_left = 162.0
-offset_top = -4.0
-offset_right = 1025.0
-offset_bottom = 450.0
-theme_override_font_sizes/normal_font_size = 35
-bbcode_enabled = true
-text = "Arrow Keys - Movement
-Spacebar - Spell (Wizard only)
-Delete/Backspace - cancel writing the word
+[node name="TutorialMovement" type="Node2D" parent="TutorialBox"]
+position = Vector2(-630, -262)
 
-Escape - Pause
-"
+[node name="Sprite2D4" type="Sprite2D" parent="TutorialBox/TutorialMovement"]
+position = Vector2(841, 351)
+rotation = -1.57052
+texture = ExtResource("14_1w62u")
+flip_h = true
+flip_v = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="TutorialBox/TutorialMovement"]
+position = Vector2(841, 493)
+rotation = 1.56917
+texture = ExtResource("14_1w62u")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TutorialBox/TutorialMovement"]
+position = Vector2(920, 418)
+texture = ExtResource("14_1w62u")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialBox/TutorialMovement"]
+position = Vector2(762, 419)
+texture = ExtResource("14_1w62u")
+
+[node name="Sprite2D5" type="Sprite2D" parent="TutorialBox/TutorialMovement"]
+position = Vector2(843, 420)
+texture = ExtResource("18_sl4ua")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialBox/TutorialMovement"]
+offset_left = 768.0
+offset_top = 282.0
+offset_right = 916.0
+offset_bottom = 316.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Movement"
+
+[node name="TutorialEnemies" type="Node2D" parent="TutorialBox"]
+position = Vector2(248, -289)
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialBox/TutorialEnemies"]
+position = Vector2(207, 430)
+texture = ExtResource("24_qtvtg")
+region_enabled = true
+region_rect = Rect2(0, 0, 103, 100)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialBox/TutorialEnemies"]
+offset_left = 159.0
+offset_top = 335.0
+offset_right = 261.0
+offset_bottom = 379.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=#4682b4]W[/color][color=#639795]O[/color][color=#a65455]RD[/color]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TutorialBox/TutorialEnemies"]
+offset_left = 276.0
+offset_top = 322.0
+offset_right = 865.0
+offset_bottom = 563.0
+theme_override_font_sizes/normal_font_size = 20
+text = "To defeat enemies write words which are above their heads
+
+Blue - Already written letters
+Green - Current letter
+Red - Next letters
+
+To cancel writing press backspace or delete
+Pause the game by pressing escape"
+
+[node name="TutorialPickups" type="Node2D" parent="TutorialBox"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialBox/TutorialPickups"]
+offset_left = 52.0
+offset_top = 317.0
+offset_right = 467.0
+offset_bottom = 397.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Collect Pickups which can help (or hinder) in your runs!"
+
+[node name="TileMap" type="TileMap" parent="TutorialBox/TutorialPickups"]
+tile_set = SubResource("TileSet_0nh6j")
+format = 2
+layer_0/tile_data = PackedInt32Array(393217, 0, 6, 458753, 0, 7, 458754, 65536, 7, 458755, 65536, 7, 458756, 65536, 7, 458757, 65536, 7, 393222, 131072, 6, 458758, 131072, 7, 393221, 65536, 6, 393220, 65536, 6, 393219, 65536, 6, 393218, 65536, 6)
+
+[node name="Sprite2D4" type="Sprite2D" parent="TutorialBox/TutorialPickups"]
+position = Vector2(173, 464)
+texture = ExtResource("25_vfhoo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TutorialBox/TutorialPickups"]
+position = Vector2(118, 420)
+texture = ExtResource("26_2awgv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TutorialBox/TutorialPickups"]
+position = Vector2(299, 471)
+texture = ExtResource("27_leura")
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialBox/TutorialPickups"]
+position = Vector2(237, 436)
+texture = ExtResource("28_swdbs")
+
+[node name="Label" type="Label" parent="TutorialBox/TutorialPickups"]
+offset_left = 332.0
+offset_top = 393.0
+offset_right = 417.0
+offset_bottom = 460.0
+theme_override_colors/font_color = Color(0.913725, 0, 0.0862745, 1)
+theme_override_font_sizes/font_size = 52
+text = "x2"
+
+[node name="TutorialBoss" type="Node2D" parent="TutorialBox"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialBox/TutorialBoss"]
+offset_left = 527.0
+offset_top = 318.0
+offset_right = 1071.0
+offset_bottom = 379.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Survive till the end and defeat the boss to get bonus points!"
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialBox/TutorialBoss"]
+position = Vector2(800, 461)
+scale = Vector2(1.59278, 1.59278)
+texture = ExtResource("29_gbp78")
+region_enabled = true
+region_rect = Rect2(0, 0, 97.7872, 100)
 
 [connection signal="pressed" from="ButtonBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ButtonBox/Leaderboards" to="." method="_on_leaderboards_pressed"]

@@ -5,7 +5,7 @@ var time: float = 0.0
 var minutes: int = 0
 var seconds: int = 0
 var miliseconds: int = 0
-var win_condition: int = 1
+var win_condition: int = 0
 var win: bool = false
 var boss = preload("res://enemies/EnemyBoss.tscn")
 @export var green = Color("#27fa14")
@@ -40,9 +40,17 @@ func boss_fight() -> void:
 	var main_scene = get_parent().get_parent().get_parent().get_parent()
 	main_scene.get_child(4).stop()
 	
-	for enemy in main_scene.enemy_container.get_children():
-		enemy.queue_free()
 	
+	
+	if win == false:
+		if !main_scene.active_enemies.is_empty():
+			for enemy in main_scene.active_enemies:
+				enemy.reset_prompt()
+			main_scene.active_enemies.clear()
+			
+		for enemy in main_scene.enemy_container.get_children():
+			enemy.queue_free()
+		
 	win = true
 	main_scene.get_child(1).global_position = main_scene.get_child(9).global_position
 	
@@ -50,6 +58,8 @@ func boss_fight() -> void:
 	var instance = boss.instantiate()
 	instance.global_position = main_scene.get_child(8).global_position
 	main_scene.enemy_container.add_child(instance)
+	
+	
 
 func format_time() -> String:
 	return "%02d:%02d.%03d" % [minutes, seconds, miliseconds]
