@@ -70,7 +70,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				
 		else:
 			for enemy in active_enemies:
-				print(enemy.name)
 				if !active_enemies.is_empty():
 					if enemy.name != "EnemyProjectile":
 						var prompt = enemy.get_prompt()

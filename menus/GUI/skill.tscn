@@ -321,7 +321,7 @@ stream = ExtResource("4_ldeku")
 bus = &"Sfx"
 
 [node name="ExplosionEffect" type="GPUParticles2D" parent="RechargePanel"]
-position = Vector2(-3661.28, -3435.83)
+position = Vector2(-3902.37, -3606.17)
 scale = Vector2(17.8929, 17.8929)
 emitting = false
 amount = 200

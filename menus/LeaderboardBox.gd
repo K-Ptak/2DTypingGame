@@ -19,7 +19,9 @@ func draw_highscores_to_ui():
 	for score in DataManagement.save_data.highscores:
 			var score_panel = score_panel_scene.instantiate()
 			score_panel.get_child(0).text = DataManagement.save_data.names[index]
+			print(DataManagement.save_data.names[index])
 			score_panel.get_child(1).text = DataManagement.save_data.time[index]
+			print(DataManagement.save_data.time[index])
 			score_panel.get_child(2).texture = draw_character_img(index)
 			score_panel.get_child(3).text = score
 			score_panel.get_child(4).texture = draw_win(index)

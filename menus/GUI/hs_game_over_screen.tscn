@@ -241,18 +241,24 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_5vybk")
 
 [node name="HSGameOverScreen" type="Panel"]
-offset_left = 2.0
-offset_right = 1152.0
-offset_bottom = 647.0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1151.0
+offset_bottom = 644.0
 script = ExtResource("1_fvhhc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 5749.0
+offset_bottom = 2939.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 390.0
-offset_top = 108.0
-offset_right = 782.0
-offset_bottom = 168.0
+offset_left = 776.0
+offset_top = 166.0
+offset_right = 1168.0
+offset_bottom = 226.0
 theme_override_font_sizes/font_size = 41
 text = "New Highscore!"
 
@@ -260,20 +266,20 @@ text = "New Highscore!"
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 603.0
-offset_top = 257.0
-offset_right = 771.0
-offset_bottom = 307.0
+offset_left = 989.0
+offset_top = 315.0
+offset_right = 1157.0
+offset_bottom = 365.0
 theme_override_font_sizes/font_size = 32
 text = "00:00:00"
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 377.0
-offset_top = 258.0
-offset_right = 585.0
-offset_bottom = 308.0
+offset_left = 763.0
+offset_top = 316.0
+offset_right = 971.0
+offset_bottom = 366.0
 theme_override_font_sizes/font_size = 32
 text = "Your Time:"
 
@@ -281,28 +287,29 @@ text = "Your Time:"
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 486.0
-offset_top = 182.0
-offset_right = 668.0
-offset_bottom = 231.0
+offset_left = 872.0
+offset_top = 240.0
+offset_right = 1054.0
+offset_bottom = 289.0
 theme_override_font_sizes/font_size = 35
 text = "0000000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-38, 58)
 tile_set = SubResource("TileSet_doalb")
 format = 2
-layer_0/tile_data = PackedInt32Array(458756, 589824, 5, 458757, 655360, 5, 458758, 655360, 5, 458759, 655360, 5, 458760, 655360, 5, 458761, 655360, 5, 458762, 655360, 5, 458763, 655360, 5, 458764, 655360, 5, 458765, 720896, 5, 524301, 720896, 5, 524300, 655360, 5, 524299, 655360, 5, 524298, 655360, 5, 524297, 655360, 5, 524296, 655360, 5, 524295, 655360, 5, 524294, 655360, 5, 524293, 655360, 5, 524292, 589824, 5)
+layer_0/tile_data = PackedInt32Array(524299, 589824, 6, 589835, 589824, 6, 524307, 720896, 6, 589843, 720896, 6, 524302, 655360, 6, 524301, 655360, 6, 524300, 655360, 6, 524304, 655360, 6, 524305, 655360, 6, 524306, 655360, 6, 589842, 655360, 6, 589841, 655360, 6, 589840, 655360, 6, 589839, 655360, 6, 524303, 655360, 6, 589837, 655360, 6, 589836, 655360, 6, 589838, 655360, 6)
 
 [node name="QuitButton" type="Button" parent="."]
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
-offset_left = 266.0
-offset_top = 522.0
-offset_right = 883.0
-offset_bottom = 559.0
+offset_left = 678.0
+offset_top = 648.0
+offset_right = 1230.0
+offset_bottom = 685.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
@@ -313,10 +320,10 @@ flat = true
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
-offset_left = 269.0
-offset_top = 459.0
-offset_right = 884.0
-offset_bottom = 496.0
+offset_left = 677.0
+offset_top = 585.0
+offset_right = 1230.0
+offset_bottom = 622.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
@@ -327,10 +334,10 @@ flat = true
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 313.0
-offset_top = 336.0
-offset_right = 564.0
-offset_bottom = 367.0
+offset_left = 699.0
+offset_top = 457.0
+offset_right = 950.0
+offset_bottom = 488.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6, 1.6)
@@ -343,10 +350,10 @@ max_length = 15
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-offset_left = 731.0
-offset_top = 341.0
-offset_right = 787.0
-offset_bottom = 379.0
+offset_left = 1117.0
+offset_top = 462.0
+offset_right = 1173.0
+offset_bottom = 500.0
 text = "Save"
 
 [node name="HSSaveSound" type="AudioStreamPlayer" parent="."]

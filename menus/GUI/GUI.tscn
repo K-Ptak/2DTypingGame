@@ -40,6 +40,7 @@ func _ready():
 			hs_to_beat = int(hs)
 
 	temp_highscore = hs_to_beat
+	print(temp_highscore)
 
 func player_damaged():
 	if $Hearts.size.x != heart_size:
@@ -513,6 +514,8 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="PlayerHurtSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

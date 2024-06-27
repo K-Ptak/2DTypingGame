@@ -372,6 +372,7 @@ text = "Main menu"
 flat = true
 
 [node name="HSLabel" type="Label" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 374.0
 offset_top = 8.0
@@ -382,6 +383,7 @@ text = "New Highscore!"
 
 [node name="PlayerName" type="LineEdit" parent="Panel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -402,6 +404,7 @@ max_length = 15
 
 [node name="HSSaveButton" type="Button" parent="Panel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.653

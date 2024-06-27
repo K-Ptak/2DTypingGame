@@ -40,16 +40,13 @@ func boss_fight() -> void:
 	var main_scene = get_parent().get_parent().get_parent().get_parent()
 	main_scene.get_child(4).stop()
 	
-	
-	
-	if win == false:
-		if !main_scene.active_enemies.is_empty():
-			for enemy in main_scene.active_enemies:
-				enemy.reset_prompt()
-			main_scene.active_enemies.clear()
+	if !main_scene.active_enemies.is_empty():
+		for enemy in main_scene.active_enemies:
+			enemy.reset_prompt()
+		main_scene.active_enemies.clear()
 			
-		for enemy in main_scene.enemy_container.get_children():
-			enemy.queue_free()
+	for enemy in main_scene.enemy_container.get_children():
+		enemy.queue_free()
 		
 	win = true
 	main_scene.get_child(1).global_position = main_scene.get_child(9).global_position
